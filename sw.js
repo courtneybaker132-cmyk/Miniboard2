@@ -1,6 +1,7 @@
-var VERSION = "mini-board-local-v5";
+/* Version 5: the display is self-contained and stores messages only on the tablet. */
+var VERSION = "mini-board-local-v5-split1";
 var CACHE = VERSION + ":" + self.registration.scope;
-var FILES = ["index.html"];
+var FILES = ["index.html", "styles.css", "content.js", "app.js"];
 self.addEventListener("install", function (event) {
   event.waitUntil(caches.open(CACHE).then(function (cache) {
     return cache.addAll(FILES.map(function (name) { return "./" + name; }));
