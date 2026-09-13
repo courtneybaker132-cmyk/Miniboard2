@@ -8,7 +8,6 @@
   <meta name="CocoaVersion" content="2575.7">
   <style type="text/css">
     p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
     span.s1 {font-kerning: none}
   </style>
 </head>
@@ -26,7 +25,6 @@
 <p class="p1"><span class="s1">&lt;/head&gt;</span></p>
 <p class="p1"><span class="s1">&lt;body class="display"&gt;</span></p>
 <p class="p1"><span class="s1">&lt;main id="board" class="board-shell" role="img" aria-label="Mini split-flap display"&gt;&lt;/main&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1">&lt;footer id="toolbar" class="board-toolbar"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;span id="mode-status" class="status" role="status"&gt;Daily messages&lt;/span&gt;&lt;br&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button id="start"&gt;Fullscreen / sound&lt;/button&gt;</span></p>
@@ -35,268 +33,89 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button id="alarm-snooze" class="hidden"&gt;Snooze 5 min&lt;/button&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button id="alarm-dismiss" class="secondary hidden"&gt;Dismiss alarm&lt;/button&gt;</span></p>
 <p class="p1"><span class="s1">&lt;/footer&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1">&lt;section id="settings" class="hidden" role="dialog" aria-modal="true" aria-labelledby="settings-title"&gt;</span></p>
 <p class="p1"><span class="s1">&lt;div class="settings-inner"&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button id="close-settings" class="secondary"&gt;Back to board&lt;/button&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h1 id="settings-title"&gt;Make it yours&lt;/h1&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h2&gt;Choose a mode&lt;/h2&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button id="normal"&gt;Daily messages&lt;/button&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button id="focus"&gt;Start / restart focus&lt;/button&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button id="breathe"&gt;Start breathing&lt;/button&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button id="ambient-mode"&gt;Ambient colors&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Focus: 25 minutes, then a 5-minute break. Breathing: 2 minutes,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>with 4 seconds in and 6 seconds out.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Tap the board for Pause / Resume. Timers cannot wake a sleeping tablet.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;Focus: 25 minutes, then a 5-minute break. Breathing: 2 minutes, with 4 seconds in and 6 seconds out. Breathe comfortably at your own pace. Choosing a mode replaces the current session.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;Tap the board for Pause / Resume. Timers keep elapsed time if the tablet sleeps, but cannot wake it or guarantee a sound while asleep. Reloading ends the session.&lt;/p&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h2&gt;Appearance&lt;/h2&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Brightness: &lt;span id="brightness-value"&gt;100%&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;Brightness: &lt;span id="brightness-value"&gt;100%&lt;/span&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;input id="brightness" type="range" min="20" max="100" step="5"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>This changes the board appearance rather than the tablet backlight.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Animation speed</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;select id="speed"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="slow"&gt;Slow&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="normal"&gt;Normal&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="quick"&gt;Quick&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;Changes the board's appearance, not the tablet backlight. Night mode dims it further from 10 PM to 6 AM. Settings stay readable.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;Animation speed</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;select id="speed"&gt;&lt;option value="slow"&gt;Slow&lt;/option&gt;&lt;option value="normal"&gt;Normal&lt;/option&gt;&lt;option value="quick"&gt;Quick&lt;/option&gt;&lt;/select&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Message color pattern</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;select id="pattern"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="corners"&gt;Original colored corners&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="border"&gt;Colored border&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="rainbow"&gt;Rainbow top &amp;amp; bottom&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="none"&gt;No accents&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;Message color pattern</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;select id="pattern"&gt;&lt;option value="corners"&gt;Original colored corners&lt;/option&gt;&lt;option value="border"&gt;Colored border&lt;/option&gt;&lt;option value="rainbow"&gt;Rainbow top &amp;amp; bottom&lt;/option&gt;&lt;option value="none"&gt;No accents&lt;/option&gt;&lt;/select&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Color scenes between messages</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;select id="ambient"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="off"&gt;Off&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="rainbow"&gt;Rainbow&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="seasonal"&gt;Seasonal colors&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="wave"&gt;Rainbow wave&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="checker"&gt;Checkerboard&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="diamond"&gt;Diamond&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="heart"&gt;Pixel hearts&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="chase"&gt;Chasing border&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;Color scenes between messages</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;select id="ambient"&gt;&lt;option value="off"&gt;Off&lt;/option&gt;&lt;option value="rainbow"&gt;Rainbow&lt;/option&gt;&lt;option value="seasonal"&gt;Seasonal colors&lt;/option&gt;&lt;option value="wave"&gt;Rainbow wave&lt;/option&gt;&lt;option value="checker"&gt;Checkerboard&lt;/option&gt;&lt;option value="diamond"&gt;Diamond&lt;/option&gt;&lt;option value="heart"&gt;Pixel hearts&lt;/option&gt;&lt;option value="chase"&gt;Chasing border&lt;/option&gt;&lt;/select&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Color scenes last 12 seconds. Seasonal colors follow the month.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;Color scenes last 12 seconds after each regular five-scene cycle. Seasonal palettes follow the calendar month. Ambient mode uses rainbow when this option is Off.&lt;/p&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h2&gt;Sound&lt;/h2&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;input id="sound" type="checkbox"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Mechanical flap clicks</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;input id="chime" type="checkbox"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Chime when focus or break ends</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Volume</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;input id="volume" type="range" min="0" max="0.4" step="0.01"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;&lt;input id="sound" type="checkbox"&gt;Mechanical flap clicks&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;&lt;input id="chime" type="checkbox"&gt;Chime when focus or break ends&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;label&gt;Volume&lt;input id="volume" type="range" min="0" max="0.4" step="0.01"&gt;&lt;/label&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button id="test-sound"&gt;Test sound&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Regular sounds are disabled between 10 PM and 6 AM. An enabled alarm</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>can still play during quiet hours. Tap Fullscreen / sound after reloading.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;Flap sounds are softer after 5 PM, and regular sounds and focus chimes are off from 10 PM to 6 AM. An enabled alarm can still sound during quiet hours. Tap Fullscreen / sound after reloading. Breathing and ambient scenes stay quiet.&lt;/p&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p id="save-status" class="status" role="status"&gt;&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h2&gt;Alarm clock&lt;/h2&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="editor"&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input id="alarm-enabled" type="checkbox"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>Alarm enabled</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;&lt;input id="alarm-enabled" type="checkbox"&gt;Alarm enabled&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;Alarm time&lt;input id="alarm-time" type="time" value="07:00"&gt;&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;Repeat</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;select id="alarm-repeat"&gt;&lt;option value="daily"&gt;Every day&lt;/option&gt;&lt;option value="weekdays"&gt;Weekdays&lt;/option&gt;&lt;option value="weekends"&gt;Weekends&lt;/option&gt;&lt;option value="once"&gt;One time&lt;/option&gt;&lt;/select&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>Alarm time</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input id="alarm-time" type="time" value="07:00"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>Repeat</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;select id="alarm-repeat"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="daily"&gt;Every day&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="weekdays"&gt;Weekdays&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="weekends"&gt;Weekends&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="once"&gt;One time&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/select&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>Alarm message</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>id="alarm-message"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>type="text"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>maxlength="80"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>value="GOOD MORNING"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input id="alarm-sound" type="checkbox" checked&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>Play alarm sound</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;Alarm message&lt;input id="alarm-message" type="text" maxlength="80" value="GOOD MORNING"&gt;&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;&lt;input id="alarm-sound" type="checkbox" checked&gt;Play alarm sound&lt;/label&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button id="save-alarm" type="button"&gt;Save alarm&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button id="test-alarm" type="button" class="secondary"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>Preview alarm</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button id="test-alarm" type="button" class="secondary"&gt;Preview alarm&lt;/button&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="alarm-status" class="status" role="status"&gt;Alarm is off.&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Leave this page open, tap Fullscreen / sound once, keep the tablet's</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>media volume on, and leave the tablet plugged in. A browser cannot wake</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>a completely sleeping or closed tablet.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;For the alarm to ring, leave this page open, tap Fullscreen / sound once, keep the tablet's media volume on, and leave the tablet plugged in. A browser cannot wake a fully sleeping or closed tablet.&lt;/p&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h2&gt;Program a message on this tablet&lt;/h2&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="editor"&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>Your message</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;textarea</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>id="custom-message"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>maxlength="180"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>placeholder="TYPE YOUR MESSAGE HERE"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>autocapitalize="characters"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>autocomplete="off"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>spellcheck="false"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&gt;&lt;/textarea&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;Your message</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;textarea id="custom-message" maxlength="180" placeholder="TYPE YOUR MESSAGE HERE" autocapitalize="characters" autocomplete="off" spellcheck="false"&gt;&lt;/textarea&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="symbol-picker" aria-label="Add a board symbol"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" data-symbol="☺" aria-label="Happy face"&gt;☺&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" data-symbol="☻" aria-label="Funny face"&gt;☻&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" data-symbol="♥" aria-label="Heart"&gt;♥&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" data-symbol="★" aria-label="Star"&gt;★&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" data-symbol="☀" aria-label="Sun"&gt;☀&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" data-symbol="☾" aria-label="Moon"&gt;☾&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" data-symbol="⚡" aria-label="Energy"&gt;⚡&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" data-symbol="✓" aria-label="You did it"&gt;✓&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" data-symbol="✦" aria-label="Sparkle"&gt;✦&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" data-symbol="✌" aria-label="Peace sign"&gt;✌&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" data-symbol="♪" aria-label="Music"&gt;♪&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" data-symbol="☕" aria-label="Coffee"&gt;☕&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" data-symbol="☺" aria-label="Happy face"&gt;☺&lt;/button&gt;&lt;button type="button" data-symbol="☻" aria-label="Funny face"&gt;☻&lt;/button&gt;&lt;button type="button" data-symbol="♥" aria-label="Heart"&gt;♥&lt;/button&gt;&lt;button type="button" data-symbol="★" aria-label="Star"&gt;★&lt;/button&gt;&lt;button type="button" data-symbol="☀" aria-label="Sun"&gt;☀&lt;/button&gt;&lt;button type="button" data-symbol="☾" aria-label="Moon"&gt;☾&lt;/button&gt;&lt;button type="button" data-symbol="⚡" aria-label="Energy"&gt;⚡&lt;/button&gt;&lt;button type="button" data-symbol="✓" aria-label="You did it"&gt;✓&lt;/button&gt;&lt;button type="button" data-symbol="✦" aria-label="Sparkle"&gt;✦&lt;/button&gt;&lt;button type="button" data-symbol="✌" aria-label="Peace sign"&gt;✌&lt;/button&gt;&lt;button type="button" data-symbol="♪" aria-label="Music"&gt;♪&lt;/button&gt;&lt;button type="button" data-symbol="☕" aria-label="Coffee"&gt;☕&lt;/button&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>id="custom-preview"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>class="message-preview"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>aria-label="Message preview"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&gt;&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="custom-fit" class="hint"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>Fits the board · 22 columns × 6 rows</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>Show it now for</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;select id="custom-duration"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="5"&gt;5 minutes&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="15"&gt;15 minutes&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="30"&gt;30 minutes&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="60"&gt;1 hour&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="0"&gt;Until I end it&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="custom-preview" class="message-preview" aria-label="Message preview"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="custom-fit" class="hint"&gt;Fits the board · 22 columns × 6 rows&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;Show it now for</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;select id="custom-duration"&gt;&lt;option value="5"&gt;5 minutes&lt;/option&gt;&lt;option value="15"&gt;15 minutes&lt;/option&gt;&lt;option value="30"&gt;30 minutes&lt;/option&gt;&lt;option value="60"&gt;1 hour&lt;/option&gt;&lt;option value="0"&gt;Until I end it&lt;/option&gt;&lt;/select&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="button-row"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button id="show-custom" type="button"&gt;Show now&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button id="end-custom" type="button" class="secondary"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>Return to schedule</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button id="end-custom" type="button" class="secondary"&gt;Return to schedule&lt;/button&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>Or add it to the regular rotation</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;select id="custom-period"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="anytime"&gt;Any time&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="morning"&gt;Morning · 6 AM–noon&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="afternoon"&gt;Afternoon · noon–5 PM&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="evening"&gt;Evening · 5–10 PM&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="night"&gt;Night · 10 PM–6 AM&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;Or add it to the regular rotation</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;select id="custom-period"&gt;&lt;option value="anytime"&gt;Any time&lt;/option&gt;&lt;option value="morning"&gt;Morning · 6 AM–noon&lt;/option&gt;&lt;option value="afternoon"&gt;Afternoon · noon–5 PM&lt;/option&gt;&lt;option value="evening"&gt;Evening · 5–10 PM&lt;/option&gt;&lt;option value="night"&gt;Night · 10 PM–6 AM&lt;/option&gt;&lt;/select&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/label&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button id="save-custom" type="button"&gt;Save to rotation&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="custom-status" class="status" role="status"&gt;&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h2&gt;Saved messages&lt;/h2&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="saved-messages"&gt;&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button id="clear-saved" type="button" class="secondary"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Delete all saved messages</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Saved messages join the built-in slides during their selected time.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>They are stored only in this browser on this tablet.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button id="clear-saved" type="button" class="secondary"&gt;Delete all saved messages&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;Saved messages join the built-in slides during their chosen time. You can delete them individually below. They are stored only in this browser on this tablet.&lt;/p&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h2&gt;Privacy &amp;amp; offline&lt;/h2&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p id="offline-status" class="hint"&gt;Checking offline support…&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>The app stores appearance choices, alarms, and programmed messages</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>only in this tablet's browser. It does not use accounts, location,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>contacts, calendars, or a cloud database.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Version 5 local · Controls hide after six seconds.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Tap the board to bring them back.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;The app stores appearance choices and your programmed messages only in this tablet's browser. It does not use accounts, location, contacts, calendars, or a cloud database. Clearing this browser's website data also clears your saved messages.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p class="hint"&gt;Version 5 local · Controls hide after six seconds. Tap the board to bring them back.&lt;/p&gt;</span></p>
 <p class="p1"><span class="s1">&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1">&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1">&lt;noscript&gt;Enable JavaScript to show the board.&lt;/noscript&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1">&lt;script src="content.js"&gt;&lt;/script&gt;</span></p>
 <p class="p1"><span class="s1">&lt;script src="app.js"&gt;&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1">&lt;/body&gt;</span></p>
 <p class="p1"><span class="s1">&lt;/html&gt;</span></p>
 </body>
