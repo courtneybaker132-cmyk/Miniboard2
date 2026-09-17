@@ -71,40 +71,32 @@ window.SMART_DISPLAY_CONFIG = {
   // Screensaver. "seasonal" changes automatically by month.
   // You can also choose "vintage", "games", or "mix" for video playlists.
   screensaver: {
-    enabled: true,
-    collection: "seasonal",
-    season: "auto", // "auto", "fall", "winter", "spring", or "summer"
-    showLabel: true,
-    motionEffects: true,
+  enabled: true,
+  collection: "vintage",
+  season: "auto",
+  showLabel: true,
+  motionEffects: true,
 
-    seasonal: {
-      fall: [
-        "media/fall-vintage-dog.png",
-        "media/fall-cartoon-painted-leaves.mp4",
-        "media/fall-misty-lake.mp4",
-        "media/fall-cartoon-sunshine-morning.mp4",
-        "media/fall-window-view.mp4",
-        "media/fall-cartoon-pumpkins.mp4",
-        "media/fall-maple-branches.mp4",
-        "media/fall-pavement-leaves.mp4"
-      ],
+  seasonal: {
+    fall: [
+      "media/fall-cartoon-painted-leaves.mp4",
+      "media/fall-cartoon-sunshine-morning.mp4",
+      "media/fall-cartoon-pumpkins.mp4"
+    ],
+    winter: [],
+    spring: [],
+    summer: []
+  },
 
-      winter: [],
-      spring: [],
-      summer: []
-    },
+  playlists: {
+    vintage: [
+      "media/fall-cartoon-painted-leaves.mp4",
+      "media/fall-cartoon-sunshine-morning.mp4",
+      "media/fall-cartoon-pumpkins.mp4"
+    ],
 
-    playlists: {
-      vintage: [
-        "media/fall-cartoon-painted-leaves.mp4",
-        "media/fall-cartoon-sunshine-morning.mp4",
-        "media/fall-cartoon-pumpkins.mp4"
-      ],
-
-      games: [
-        // "media/retro-gameplay-1.mp4",
-        // "media/retro-gameplay-2.mp4"
-      ]
-    }
+    games: []
+  }
+}
   }
 };
