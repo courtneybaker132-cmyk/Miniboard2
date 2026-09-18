@@ -1,0 +1,148 @@
+name: Rebuild vintage clips with original audio
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+
+  rebuild-clips:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+
+      - name: Download public-domain source films
+        run: |
+
+          mkdir -p sources media
+
+          curl -L --fail --retry 3 \
+            "https://upload.wikimedia.org/wikipedia/commons/1/17/Jack_Frost_%281934%29.webm" \
+            -o sources/jack-frost.webm
+
+          curl -L --fail --retry 3 \
+            "https://upload.wikimedia.org/wikipedia/commons/5/5e/The_Sunshine_Makers_%281935%29.ogv" \
+            -o sources/sunshine-makers.ogv
+
+
+      - name: Build Jack Frost - Painted Leaves
+        run: |
+
+          ffmpeg -y \
+            -ss 00:01:08 \
+            -i sources/jack-frost.webm \
+            -t 28 \
+            -map 0:v:0 \
+            -map 0:a:0? \
+            -vf "scale='min(960,iw)':-2" \
+            -c:v libx264 \
+            -preset medium \
+            -crf 23 \
+            -pix_fmt yuv420p \
+            -c:a aac \
+            -b:a 128k \
+            -movflags +faststart \
+            media/fall-cartoon-painted-leaves.mp4
+
+
+      - name: Build The Sunshine Makers - Morning
+        run: |
+
+          ffmpeg -y \
+            -ss 00:00:20 \
+            -i sources/sunshine-makers.ogv \
+            -t 28 \
+            -map 0:v:0 \
+            -map 0:a:0? \
+            -vf "scale='min(960,iw)':-2" \
+            -c:v libx264 \
+            -preset medium \
+            -crf 23 \
+            -pix_fmt yuv420p \
+            -c:a aac \
+            -b:a 128k \
+            -movflags +faststart \
+            media/fall-cartoon-sunshine-morning.mp4
+
+
+      - name: Build Jack Frost - Pumpkin Patch
+        run: |
+
+          ffmpeg -y \
+            -ss 00:03:45 \
+            -i sources/jack-frost.webm \
+            -t 28 \
+            -map 0:v:0 \
+            -map 0:a:0? \
+            -vf "scale='min(960,iw)':-2" \
+            -c:v libx264 \
+            -preset medium \
+            -crf 23 \
+            -pix_fmt yuv420p \
+            -c:a aac \
+            -b:a 128k \
+            -movflags +faststart \
+            media/fall-cartoon-pumpkins.mp4
+
+
+      - name: Verify audio streams
+        run: |
+
+          for file in \
+            media/fall-cartoon-painted-leaves.mp4 \
+            media/fall-cartoon-sunshine-morning.mp4 \
+            media/fall-cartoon-pumpkins.mp4
+
+          do
+
+            echo "Checking $file"
+
+            ffprobe \
+              -v error \
+              -select_streams a:0 \
+              -show_entries stream=codec_name \
+              -of default=noprint_wrappers=1:nokey=1 \
+              "$file"
+
+          done
+
+
+      - name: Commit rebuilt clips
+        run: |
+
+          git config user.name "github-actions[bot]"
+
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            media/fall-cartoon-painted-leaves.mp4 \
+            media/fall-cartoon-sunshine-morning.mp4 \
+            media/fall-cartoon-pumpkins.mp4
+
+          if git diff --cached --quiet
+          then
+
+            echo "No media changes to commit."
+
+          else
+
+            git commit \
+              -m "Restore original cartoon audio"
+
+            git push
+
+          fi
