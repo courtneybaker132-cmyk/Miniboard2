@@ -1,0 +1,1622 @@
+:root{
+  --cream:#f1dfb7;
+  --dim:#b8a681;
+  --dark:#17130d;
+  --panel:#211b12;
+  --glow:rgba(241,223,183,.22);
+  --brightness:1;
+  --app-height:100vh;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  width:100%;
+  height:100%;
+  margin:0;
+  background:#0c0a07;
+  color:var(--cream);
+  overflow:hidden;
+  overscroll-behavior:none;
+}
+
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  display:grid;
+  place-items:center;
+  filter:brightness(var(--brightness));
+  transition:filter .4s ease;
+}
+
+button{
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+
+
+/* =========================================================
+   MAIN DISPLAY
+   ========================================================= */
+
+.tv{
+  position:relative;
+  width:100vw;
+  height:var(--app-height);
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(76,61,35,.18),
+      transparent 58%
+    ),
+    linear-gradient(
+      180deg,
+      #1d180f 0%,
+      #11100b 100%
+    );
+
+  padding:max(18px,3vw);
+
+  padding-left:max(
+    18px,
+    env(safe-area-inset-left)
+  );
+
+  padding-right:max(
+    18px,
+    env(safe-area-inset-right)
+  );
+
+  padding-top:max(
+    18px,
+    env(safe-area-inset-top)
+  );
+
+  padding-bottom:max(
+    18px,
+    env(safe-area-inset-bottom)
+  );
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.tv:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.18;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.055) 0 1px,
+      transparent 1px 4px
+    );
+
+  mix-blend-mode:screen;
+}
+
+.tv:after{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 45%,
+      rgba(0,0,0,.55) 78%
+    );
+}
+
+
+/* =========================================================
+   WEATHER AMBIENCE
+   ========================================================= */
+
+.weather-ambient{
+  position:absolute;
+  z-index:1;
+  inset:0;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity 1s ease;
+}
+
+body.weather-rain .weather-ambient{
+  opacity:.13;
+
+  background:
+    repeating-linear-gradient(
+      105deg,
+      transparent 0 15px,
+      rgba(190,210,225,.65) 16px 17px,
+      transparent 18px 28px
+    );
+
+  animation:rainMove 1.2s linear infinite;
+}
+
+body.weather-snow .weather-ambient{
+  opacity:.18;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.9) 0 1.5px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.7) 0 1px,
+      transparent 1.5px
+    );
+
+  background-size:
+    48px 48px,
+    31px 31px;
+
+  animation:snowMove 9s linear infinite;
+}
+
+body.weather-fog .weather-ambient{
+  opacity:.2;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 15%,
+      rgba(220,218,205,.18) 45%,
+      rgba(220,218,205,.08) 75%,
+      transparent
+    );
+}
+
+body.weather-clear .weather-ambient{
+  opacity:.1;
+
+  background:
+    radial-gradient(
+      circle at 82% 15%,
+      rgba(255,205,107,.7),
+      transparent 26%
+    );
+}
+
+@keyframes rainMove{
+  from{
+    transform:translate3d(0,-20px,0);
+  }
+
+  to{
+    transform:translate3d(-14px,26px,0);
+  }
+}
+
+@keyframes snowMove{
+  from{
+    background-position:
+      0 -30px,
+      10px -20px;
+  }
+
+  to{
+    background-position:
+      25px 110px,
+      -20px 90px;
+  }
+}
+
+
+/* =========================================================
+   TOP / BOTTOM BARS
+   ========================================================= */
+
+.topbar,
+.footer{
+  position:relative;
+  z-index:4;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:16px;
+
+  color:var(--dim);
+
+  letter-spacing:.13em;
+
+  text-transform:uppercase;
+
+  font-size:clamp(
+    11px,
+    1.7vw,
+    16px
+  );
+}
+
+.status{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:#6c624e;
+}
+
+.dot.online{
+  background:#d7c391;
+
+  box-shadow:
+    0 0 12px
+    rgba(215,195,145,.65);
+}
+
+
+/* =========================================================
+   PAGES
+   ========================================================= */
+
+.screen{
+  position:relative;
+  z-index:3;
+
+  flex:1;
+
+  display:grid;
+  place-items:center;
+
+  min-height:0;
+}
+
+.page{
+  width:min(100%,1100px);
+  display:none;
+  text-align:center;
+  animation:fade .55s ease;
+}
+
+.page.active{
+  display:block;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(5px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.eyebrow{
+  font-size:clamp(
+    12px,
+    2vw,
+    19px
+  );
+
+  letter-spacing:.28em;
+
+  text-transform:uppercase;
+
+  color:var(--dim);
+
+  margin-bottom:18px;
+}
+
+.clock{
+  font-size:clamp(
+    62px,
+    17vw,
+    190px
+  );
+
+  line-height:.88;
+
+  letter-spacing:-.055em;
+
+  text-shadow:
+    0 0 24px
+    var(--glow);
+
+  font-variant-numeric:
+    tabular-nums;
+}
+
+.ampm{
+  font-size:.22em;
+  letter-spacing:.08em;
+  margin-left:.12em;
+  color:var(--dim);
+}
+
+.date{
+  font-size:clamp(
+    18px,
+    3vw,
+    32px
+  );
+
+  margin-top:18px;
+
+  color:var(--dim);
+}
+
+.message{
+  font-size:clamp(
+    25px,
+    5.6vw,
+    64px
+  );
+
+  line-height:1.08;
+
+  max-width:950px;
+
+  margin:34px auto 0;
+
+  text-wrap:balance;
+
+  text-shadow:
+    0 0 18px
+    rgba(241,223,183,.11);
+}
+
+.submessage{
+  font-size:clamp(
+    14px,
+    2.2vw,
+    22px
+  );
+
+  color:var(--dim);
+
+  margin:18px auto 0;
+
+  max-width:850px;
+
+  line-height:1.45;
+}
+
+
+/* =========================================================
+   WEATHER
+   ========================================================= */
+
+.weather-temp{
+  font-size:clamp(
+    76px,
+    18vw,
+    190px
+  );
+
+  line-height:.9;
+}
+
+.weather-desc{
+  font-size:clamp(
+    24px,
+    5vw,
+    56px
+  );
+
+  margin-top:20px;
+}
+
+.weather-grid{
+  margin:35px auto 0;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0,1fr)
+    );
+
+  gap:12px;
+
+  max-width:800px;
+}
+
+.card{
+  border:
+    1px solid
+    rgba(241,223,183,.2);
+
+  background:
+    rgba(255,255,255,.025);
+
+  padding:
+    18px 12px;
+
+  border-radius:12px;
+}
+
+.card span{
+  display:block;
+
+  color:var(--dim);
+
+  font-size:clamp(
+    10px,
+    1.6vw,
+    14px
+  );
+
+  letter-spacing:.15em;
+
+  text-transform:uppercase;
+
+  margin-bottom:6px;
+}
+
+.card strong{
+  font-size:clamp(
+    18px,
+    3vw,
+    28px
+  );
+
+  font-weight:normal;
+}
+
+
+/* =========================================================
+   CALENDAR
+   ========================================================= */
+
+.events{
+  width:min(
+    900px,
+    92vw
+  );
+
+  display:grid;
+
+  gap:12px;
+}
+
+.event{
+  display:grid;
+
+  grid-template-columns:
+    minmax(
+      110px,
+      .34fr
+    )
+    1fr;
+
+  gap:18px;
+
+  align-items:center;
+
+  text-align:left;
+
+  border:
+    1px solid
+    rgba(241,223,183,.16);
+
+  border-radius:14px;
+
+  padding:
+    16px 20px;
+
+  background:
+    rgba(255,255,255,.025);
+}
+
+.event-time{
+  color:var(--dim);
+
+  font-size:clamp(
+    14px,
+    2vw,
+    22px
+  );
+
+  line-height:1.25;
+}
+
+.event-title{
+  font-size:clamp(
+    22px,
+    3.6vw,
+    42px
+  );
+
+  line-height:1.06;
+}
+
+.event-empty{
+  font-size:clamp(
+    26px,
+    5vw,
+    52px
+  );
+
+  color:var(--dim);
+}
+
+
+/* =========================================================
+   VINTAGE TV / FILM SCREEN
+   ========================================================= */
+
+.video-page{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  max-width:none;
+  height:100%;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      #17130d 0,
+      #090806 62%,
+      #050403 100%
+    );
+}
+
+.video-page.active{
+  display:block;
+}
+
+
+.vintage-tv-shell{
+
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  width:min(
+    100%,
+    calc(100vh * 1.5988)
+  );
+
+  aspect-ratio:793/496;
+
+  transform:
+    translate(-50%,-50%);
+
+  filter:
+    drop-shadow(
+      0 18px 32px
+      rgba(0,0,0,.58)
+    );
+
+  overflow:visible;
+}
+
+
+/*
+  The TV frame image uses a transparent CRT opening.
+
+  Approximate opening:
+
+  left  = 11.28%
+  top   = 10.58%
+  width = 64.94%
+  height= 71.67%
+
+  This positions the movie inside the wooden cabinet.
+*/
+
+.crt-screen{
+
+  position:absolute;
+
+  left:11.28%;
+  top:10.58%;
+
+  width:64.94%;
+  height:71.67%;
+
+  overflow:hidden;
+
+  border-radius:
+    13% / 15%;
+
+  background:#020201;
+
+  z-index:1;
+
+  transform:
+    translateZ(0);
+
+  box-shadow:
+
+    inset
+    0 0 32px
+    rgba(0,0,0,.7),
+
+    inset
+    0 0 10px
+    rgba(
+      255,
+      220,
+      156,
+      var(--crt-glow,.13)
+    ),
+
+    0 0 26px
+    rgba(
+      224,
+      188,
+      118,
+      .08
+    );
+}
+
+
+/* MOVIE */
+
+.media-layer{
+
+  position:absolute;
+
+  inset:-1.5%;
+
+  width:103%;
+  height:103%;
+
+  object-fit:cover;
+
+  background:#030302;
+
+  opacity:0;
+
+  transition:
+    opacity
+    var(
+      --media-transition,
+      650ms
+    )
+    ease;
+
+  filter:
+    sepia(.10)
+    saturate(.92)
+    contrast(1.05)
+    brightness(.94);
+
+  transform:
+    scale(1.015);
+}
+
+.media-layer.visible{
+  opacity:1;
+}
+
+.media-layer.hidden-media{
+  display:none;
+}
+
+
+/* =========================================================
+   CRT BLOOM / VIGNETTE
+   ========================================================= */
+
+.crt-bloom{
+
+  position:absolute;
+
+  z-index:3;
+
+  inset:0;
+
+  pointer-events:none;
+
+  border-radius:inherit;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 52%,
+      rgba(0,0,0,.16) 73%,
+      rgba(0,0,0,.72) 100%
+    );
+
+  box-shadow:
+    inset
+    0 0 34px
+    rgba(238,210,155,.06);
+}
+
+
+/* =========================================================
+   CRT SCANLINES
+   ========================================================= */
+
+.crt-scanlines{
+
+  position:absolute;
+
+  z-index:4;
+
+  inset:0;
+
+  pointer-events:none;
+
+  border-radius:inherit;
+
+  opacity:
+    var(
+      --crt-scanline-opacity,
+      .16
+    );
+
+  background:
+    repeating-linear-gradient(
+
+      to bottom,
+
+      rgba(0,0,0,0)
+      0,
+
+      rgba(0,0,0,0)
+      2px,
+
+      rgba(20,12,6,.44)
+      3px,
+
+      rgba(20,12,6,.44)
+      4px
+
+    );
+
+  mix-blend-mode:multiply;
+}
+
+
+/* =========================================================
+   CRT GLASS
+   ========================================================= */
+
+.crt-glass{
+
+  position:absolute;
+
+  z-index:5;
+
+  inset:0;
+
+  pointer-events:none;
+
+  border-radius:inherit;
+
+  opacity:
+    var(
+      --crt-glass-opacity,
+      .24
+    );
+
+  background:
+
+    linear-gradient(
+      118deg,
+      rgba(255,255,255,.16)
+      0%,
+
+      rgba(255,255,255,.045)
+      18%,
+
+      transparent
+      37%
+    ),
+
+    radial-gradient(
+      ellipse
+      at 44% 17%,
+
+      rgba(255,235,198,.11),
+
+      transparent
+      36%
+    );
+
+  mix-blend-mode:screen;
+}
+
+
+/* =========================================================
+   CRT FLICKER
+   ========================================================= */
+
+.crt-flicker{
+
+  position:absolute;
+
+  z-index:6;
+
+  inset:0;
+
+  pointer-events:none;
+
+  border-radius:inherit;
+
+  background:
+    rgba(
+      255,
+      235,
+      198,
+      .06
+    );
+
+  opacity:0;
+
+  animation:
+    crtFlicker
+    7.4s
+    steps(1,end)
+    infinite;
+}
+
+
+body.crt-flicker-off
+.crt-flicker{
+  display:none;
+}
+
+
+body.crt-scanlines-off
+.crt-scanlines{
+  display:none;
+}
+
+
+body.crt-glass-off
+.crt-glass{
+  display:none;
+}
+
+
+@keyframes crtFlicker{
+
+  0%,
+  92%,
+  94%,
+  100%{
+    opacity:0;
+  }
+
+  92.5%{
+    opacity:
+      var(
+        --crt-flicker-opacity,
+        .055
+      );
+  }
+
+  93%{
+    opacity:.015;
+  }
+
+  93.5%{
+    opacity:
+      var(
+        --crt-flicker-opacity,
+        .055
+      );
+  }
+}
+
+
+/* =========================================================
+   TV CABINET IMAGE
+   ========================================================= */
+
+.tv-frame-overlay{
+
+  position:absolute;
+
+  z-index:8;
+
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:contain;
+
+  pointer-events:none;
+
+  user-select:none;
+
+  -webkit-user-drag:none;
+
+  transition:
+    opacity .28s ease;
+}
+
+
+/* FRAME OFF MODE */
+
+.vintage-tv-shell.frame-off
+.tv-frame-overlay,
+
+.vintage-tv-shell.frame-off
+.tv-power-led{
+  opacity:0;
+}
+
+
+.vintage-tv-shell.frame-off
+.crt-screen{
+
+  left:3%;
+  top:3%;
+
+  width:94%;
+  height:94%;
+
+  border-radius:5%;
+}
+
+
+/* =========================================================
+   POWER LIGHT
+   ========================================================= */
+
+.tv-power-led{
+
+  position:absolute;
+
+  z-index:9;
+
+  right:17.05%;
+
+  top:51.9%;
+
+  width:5px;
+  height:5px;
+
+  border-radius:50%;
+
+  background:#c79345;
+
+  box-shadow:
+
+    0 0 5px
+    rgba(255,196,90,.75),
+
+    0 0 12px
+    rgba(255,163,54,.32);
+
+  pointer-events:none;
+}
+
+
+body.quiet-mode
+.tv-power-led{
+  opacity:.4;
+}
+
+
+/* =========================================================
+   FILM LABEL
+   ========================================================= */
+
+.video-label{
+
+  position:absolute;
+
+  z-index:12;
+
+  left:max(
+    18px,
+    12vw
+  );
+
+  bottom:max(
+    14px,
+    4vh
+  );
+
+  padding:
+    7px 10px;
+
+  border:
+    1px solid
+    rgba(241,223,183,.22);
+
+  border-radius:999px;
+
+  background:
+    rgba(12,10,7,.68);
+
+  color:var(--dim);
+
+  font-size:10px;
+
+  letter-spacing:.13em;
+
+  text-transform:uppercase;
+
+  backdrop-filter:
+    blur(5px);
+}
+
+
+/* =========================================================
+   MEDIA ERROR
+   ========================================================= */
+
+.video-empty{
+
+  position:absolute;
+
+  z-index:7;
+
+  inset:0;
+
+  display:grid;
+
+  place-items:center;
+
+  padding:28px;
+
+  color:var(--dim);
+
+  font-size:clamp(
+    16px,
+    2.6vw,
+    30px
+  );
+
+  line-height:1.35;
+
+  background:
+    radial-gradient(
+      circle at 45% 40%,
+      #443522,
+      transparent 44%
+    ),
+    #0b0906;
+}
+
+
+/* =========================================================
+   CONTROL BUTTON
+   ========================================================= */
+
+.control-toggle{
+
+  position:absolute;
+
+  z-index:40;
+
+  right:max(
+    14px,
+    env(safe-area-inset-right)
+  );
+
+  bottom:max(
+    14px,
+    env(safe-area-inset-bottom)
+  );
+
+  width:54px;
+  height:54px;
+
+  border:
+    1px solid
+    rgba(241,223,183,.38);
+
+  border-radius:50%;
+
+  background:
+    rgba(15,13,9,.86);
+
+  color:var(--cream);
+
+  font:inherit;
+
+  font-size:24px;
+
+  display:grid;
+
+  place-items:center;
+
+  box-shadow:
+    0 6px 24px
+    rgba(0,0,0,.35);
+
+  backdrop-filter:
+    blur(8px);
+
+  cursor:pointer;
+
+  transition:
+    opacity .25s ease;
+}
+
+
+.control-toggle.idle{
+  opacity:.36;
+}
+
+
+/* =========================================================
+   CONTROL MENU
+   ========================================================= */
+
+.control-panel{
+
+  position:absolute;
+
+  z-index:39;
+
+  right:max(
+    14px,
+    env(safe-area-inset-right)
+  );
+
+  bottom:max(
+    78px,
+    calc(
+      env(safe-area-inset-bottom)
+      + 78px
+    )
+  );
+
+  width:min(
+    390px,
+    calc(
+      100vw - 28px
+    )
+  );
+
+  padding:12px;
+
+  border:
+    1px solid
+    rgba(241,223,183,.28);
+
+  border-radius:16px;
+
+  background:
+    rgba(12,10,7,.95);
+
+  box-shadow:
+    0 14px 45px
+    rgba(0,0,0,.46);
+
+  backdrop-filter:
+    blur(12px);
+
+  opacity:0;
+
+  transform:
+    translateY(8px)
+    scale(.98);
+
+  pointer-events:none;
+
+  transition:
+    opacity .18s ease,
+    transform .18s ease;
+}
+
+
+.control-panel.open{
+
+  opacity:1;
+
+  transform:none;
+
+  pointer-events:auto;
+}
+
+
+.control-title{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  color:var(--dim);
+
+  font-size:11px;
+
+  letter-spacing:.16em;
+
+  text-transform:uppercase;
+
+  padding:
+    2px 2px 10px;
+}
+
+
+.control-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
+
+  gap:8px;
+}
+
+
+.control-btn{
+
+  min-height:50px;
+
+  border:
+    1px solid
+    rgba(241,223,183,.2);
+
+  border-radius:11px;
+
+  background:
+    rgba(255,255,255,.035);
+
+  color:var(--cream);
+
+  font:inherit;
+
+  font-size:13px;
+
+  letter-spacing:.03em;
+
+  padding:9px;
+
+  cursor:pointer;
+}
+
+
+.control-btn:active{
+
+  transform:scale(.98);
+
+  background:
+    rgba(241,223,183,.12);
+}
+
+
+.control-btn.wide{
+  grid-column:1/-1;
+}
+
+
+/* =========================================================
+   SYSTEM STATUS
+   ========================================================= */
+
+.health{
+
+  position:absolute;
+
+  z-index:45;
+
+  inset:0;
+
+  display:none;
+
+  place-items:center;
+
+  padding:20px;
+
+  background:
+    rgba(0,0,0,.62);
+}
+
+
+.health.open{
+  display:grid;
+}
+
+
+.health-card{
+
+  width:min(
+    620px,
+    94vw
+  );
+
+  max-height:88vh;
+
+  overflow:auto;
+
+  border:
+    1px solid
+    rgba(241,223,183,.3);
+
+  border-radius:18px;
+
+  background:#15110c;
+
+  padding:18px;
+
+  box-shadow:
+    0 20px 70px
+    rgba(0,0,0,.6);
+}
+
+
+.health-head{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:14px;
+}
+
+
+.health-title{
+  font-size:20px;
+}
+
+
+.health-close{
+
+  width:44px;
+
+  height:44px;
+
+  border:
+    1px solid
+    rgba(241,223,183,.2);
+
+  border-radius:50%;
+
+  background:transparent;
+
+  color:var(--cream);
+
+  font-size:22px;
+}
+
+
+.health-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    160px 1fr;
+
+  gap:
+    8px 14px;
+
+  font-family:
+    system-ui,
+    sans-serif;
+
+  font-size:13px;
+}
+
+
+.health-grid dt{
+  color:var(--dim);
+}
+
+
+.health-grid dd{
+
+  margin:0;
+
+  word-break:break-word;
+}
+
+
+.health-actions{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      1fr
+    );
+
+  gap:8px;
+
+  margin-top:16px;
+}
+
+
+/* =========================================================
+   UTILITIES
+   ========================================================= */
+
+.hidden{
+  display:none!important;
+}
+
+.burn-shift{
+  transition:
+    transform 1.2s ease;
+}
+
+
+body.quiet-mode
+.topbar,
+
+body.quiet-mode
+.footer{
+
+  opacity:.38;
+}
+
+
+/* =========================================================
+   FIRE TABLET LANDSCAPE
+   ========================================================= */
+
+@media(
+  orientation:landscape
+)
+and
+(max-height:900px){
+
+  .tv{
+    padding:
+      16px 24px;
+  }
+
+  .topbar,
+  .footer{
+    font-size:clamp(
+      10px,
+      1.3vw,
+      14px
+    );
+  }
+
+  .eyebrow{
+    font-size:clamp(
+      11px,
+      1.5vw,
+      16px
+    );
+
+    margin-bottom:10px;
+  }
+
+  .clock{
+    font-size:clamp(
+      64px,
+      14vw,
+      150px
+    );
+  }
+
+  .date{
+    font-size:clamp(
+      16px,
+      2.3vw,
+      26px
+    );
+
+    margin-top:10px;
+  }
+
+  .message{
+    font-size:clamp(
+      22px,
+      4vw,
+      48px
+    );
+
+    margin-top:18px;
+  }
+
+  .submessage{
+    font-size:clamp(
+      13px,
+      1.8vw,
+      19px
+    );
+
+    margin-top:10px;
+  }
+
+  .weather-temp{
+    font-size:clamp(
+      72px,
+      14vw,
+      150px
+    );
+  }
+
+  .weather-desc{
+    font-size:clamp(
+      22px,
+      3.8vw,
+      46px
+    );
+
+    margin-top:10px;
+  }
+
+  .weather-grid{
+    margin-top:18px;
+  }
+
+  .card{
+    padding:
+      11px 9px;
+  }
+
+  .events{
+    gap:8px;
+  }
+
+  .event{
+    padding:
+      11px 15px;
+  }
+
+  .control-btn{
+    min-height:46px;
+  }
+}
+
+
+@media(max-width:650px){
+
+  .tv{
+    padding:15px;
+  }
+
+  .footer{
+    font-size:10px;
+  }
+
+  .weather-grid{
+    grid-template-columns:
+      repeat(
+        3,
+        1fr
+      );
+  }
+
+  .health-grid{
+    grid-template-columns:
+      120px 1fr;
+  }
+}
+
+
+@media(
+  prefers-reduced-motion:reduce
+){
+
+  *{
+    animation:none!important;
+    transition:none!important;
+  }
+}
