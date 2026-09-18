@@ -1,163 +1,211 @@
-// Mini Vestaboard v3.1 configuration
-// Safe to edit. Keep the surrounding braces/commas intact.
+// Mini Vestaboard v3.2 configuration
+// Main settings live here.
+// The HTML, CSS and app logic are now separate files.
 
 window.SMART_DISPLAY_CONFIG = {
-  appVersion: "3.1.0",
+
+  appVersion: "3.2.0",
+
   displayName: "HOME TV",
+
   timezone: "America/New_York",
 
+
+  // =========================================================
+  // WEATHER
+  // =========================================================
+
   weather: {
+
     enabled: true,
+
     latitude: 40.7128,
+
     longitude: -74.0060,
+
     locationName: "New York",
+
     temperatureUnit: "fahrenheit",
+
     refreshMinutes: 20,
+
     ambientEffects: true
   },
 
+
+  // =========================================================
+  // CALENDAR
+  // =========================================================
+
   calendar: {
+
     enabled: true,
-    source: "manual", // "manual" or "google-public"
+
+    source: "manual",
+
     googleCalendarId: "",
+
     googleCalendarApiKey: "",
+
     refreshMinutes: 15,
+
     maxVisibleEvents: 3,
 
     events: [
+
       // Example:
+      //
       // {
       //   title: "Dinner reservation",
       //   start: "2026-09-18T19:00:00-04:00"
       // }
+
     ]
   },
 
+
+  // =========================================================
+  // GENERAL SOUND
+  // =========================================================
+
   sound: {
+
     enabledByDefault: false,
 
     hourlyChime: true,
+
     morningChimeHour: 8,
+
     eveningChimeHour: 19,
 
     quietStartHour: 23,
+
     quietEndHour: 7
   },
 
-  /*
-    AUDIO MODES
 
-    "cinema"
-      Music plays on Home / Weather / Calendar.
-      Music fades away when a vintage film starts.
-      Soft projector ambience replaces it.
-
-    "music"
-      Music continues on every screen.
-
-    "silent"
-      Background music and film ambience stay off.
-  */
+  // =========================================================
+  // AUDIO MODE
+  // =========================================================
+  //
+  // cinema
+  //   Piano plays on Home / Weather / Calendar.
+  //   Original cartoon soundtrack plays on film screen.
+  //
+  // music
+  //   Piano continues on all screens.
+  //   Cartoon soundtrack is muted.
+  //
+  // silent
+  //   No background audio.
+  //
 
   audio: {
+
     mode: "cinema",
 
     fadeMs: 900,
 
-    filmAmbience: {
-      enabled: true,
-
-      // Keep this subtle.
-      volume: 0.018,
-
-      humFrequency: 54,
-
-      crackle: true
-    }
+    // Volume of original cartoon soundtrack
+    filmVolume: 0.72
   },
 
-  /*
-    NIGHT MODE
-    11 PM → 7 AM
-  */
+
+  // =========================================================
+  // NIGHT MODE
+  // =========================================================
 
   quietDisplay: {
+
     enabled: true,
+
     screen: "video",
+
     brightness: 0.42
   },
 
-  /*
-    BACKGROUND MUSIC
 
-    These tracks play only on the information screens
-    when Cinema mode is enabled.
-
-    They automatically fade out when a cartoon begins.
-  */
+  // =========================================================
+  // BACKGROUND PIANO
+  // =========================================================
 
   daytimeMusic: {
+
     enabled: true,
 
-    // Lower volume works much better for an ambient display.
     volume: 0.10,
 
     shuffle: true,
 
     tracks: [
+
       "media/piano-nostalgic-old.mp3",
+
       "media/piano-gentle-cinematic.mp3",
+
       "media/piano-nostalgic-slow.mp3"
+
     ]
   },
 
-  /*
-    SCREEN ROTATION
-  */
+
+  // =========================================================
+  // SCREEN ROTATION
+  // =========================================================
 
   rotation: {
+
     enabled: true,
 
     secondsPerScreen: 35,
 
     screens: [
+
       "home",
+
       "weather",
+
       "calendar",
+
       "video"
+
     ]
   },
 
-  /*
-    VINTAGE FILMS
-  */
+
+  // =========================================================
+  // VINTAGE FILMS
+  // =========================================================
 
   screensaver: {
+
     enabled: true,
 
     collection: "vintage",
 
     showLabel: true,
 
-    // Smooth crossfade between videos.
     transitionMs: 650,
 
-    // Approximate display duration.
     mediaSeconds: 28,
 
+
     playlists: {
+
       vintage: [
+
         "media/fall-cartoon-painted-leaves.mp4",
+
         "media/fall-cartoon-sunshine-morning.mp4",
+
         "media/fall-cartoon-pumpkins.mp4"
+
       ]
     },
 
-    /*
-      Friendly titles shown instead of filenames.
-    */
 
     mediaTitles: {
+
       "media/fall-cartoon-painted-leaves.mp4":
         "Jack Frost · Painted Leaves",
 
@@ -166,71 +214,122 @@ window.SMART_DISPLAY_CONFIG = {
 
       "media/fall-cartoon-pumpkins.mp4":
         "Jack Frost · Pumpkin Patch"
+
     },
 
-    /*
-      TIME-OF-DAY PLAYLIST ORDER
-
-      Same three films, but their starting order changes
-      depending on the time.
-    */
 
     timeOfDay: {
+
       enabled: true,
 
+
       morning: [
+
         "media/fall-cartoon-sunshine-morning.mp4",
+
         "media/fall-cartoon-painted-leaves.mp4",
+
         "media/fall-cartoon-pumpkins.mp4"
+
       ],
+
 
       afternoon: [
+
         "media/fall-cartoon-painted-leaves.mp4",
+
         "media/fall-cartoon-sunshine-morning.mp4",
+
         "media/fall-cartoon-pumpkins.mp4"
+
       ],
+
 
       evening: [
+
         "media/fall-cartoon-pumpkins.mp4",
+
         "media/fall-cartoon-painted-leaves.mp4",
+
         "media/fall-cartoon-sunshine-morning.mp4"
+
       ],
 
+
       night: [
+
         "media/fall-cartoon-pumpkins.mp4",
+
         "media/fall-cartoon-sunshine-morning.mp4",
+
         "media/fall-cartoon-painted-leaves.mp4"
+
       ]
     }
   },
 
-  /*
-    FIRE TABLET / KIOSK SETTINGS
-  */
+
+  // =========================================================
+  // VINTAGE TV CABINET
+  // =========================================================
+
+  tvFrame: {
+
+    enabled: true,
+
+    image: "media/vintage-tv-frame.png"
+  },
+
+
+  // =========================================================
+  // CRT EFFECTS
+  // =========================================================
+  //
+  // These are intentionally subtle.
+  //
+  // You can change these later without touching CSS.
+  //
+
+  crt: {
+
+    scanlines: true,
+
+    scanlineOpacity: 0.16,
+
+    glass: true,
+
+    glassOpacity: 0.24,
+
+    flicker: true,
+
+    flickerOpacity: 0.055,
+
+    glow: 0.13
+  },
+
+
+  // =========================================================
+  // FIRE TABLET / KIOSK
+  // =========================================================
 
   kiosk: {
-    // Hide the menu after inactivity.
+
     autoHideControlsSeconds: 8,
 
-    // Long press anywhere to bring controls back.
     longPressMs: 650,
 
-    // Attempt landscape orientation in fullscreen.
     requestLandscapeOnFullscreen: true,
 
-    // If you manually choose a screen,
-    // stay there before auto rotation resumes.
     manualHoldSeconds: 90
   },
 
-  /*
-    AUTOMATIC RECOVERY
 
-    Helps the Fire tablet recover if a video freezes
-    or the browser has been running for a long time.
-  */
+  // =========================================================
+  // AUTO RECOVERY
+  // =========================================================
 
   recovery: {
+
     enabled: true,
 
     watchdogSeconds: 20,
@@ -239,4 +338,5 @@ window.SMART_DISPLAY_CONFIG = {
 
     reloadAfterConsecutiveFailures: 8
   }
+
 };
