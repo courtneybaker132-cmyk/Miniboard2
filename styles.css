@@ -1,120 +1,175 @@
 :root{
+
   --cream:#f1dfb7;
+
   --dim:#b8a681;
+
   --dark:#17130d;
+
   --panel:#211b12;
+
   --glow:rgba(241,223,183,.22);
+
   --brightness:1;
+
   --app-height:100vh;
+
+  --crt-glow:.15;
+
+  --crt-scanline-opacity:.12;
+
+  --crt-glass-opacity:.20;
+
+  --crt-flicker-opacity:.035;
+
 }
+
 
 *{
   box-sizing:border-box;
 }
 
+
 html,
 body{
+
   width:100%;
+
   height:100%;
+
   margin:0;
-  background:#0c0a07;
-  color:var(--cream);
+
   overflow:hidden;
+
+  background:#090704;
+
+  color:var(--cream);
+
   overscroll-behavior:none;
+
 }
+
 
 body{
-  font-family:Georgia,"Times New Roman",serif;
+
   display:grid;
+
   place-items:center;
-  filter:brightness(var(--brightness));
-  transition:filter .4s ease;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  filter:
+    brightness(
+      var(--brightness)
+    );
+
+  transition:
+    filter .4s ease;
+
 }
 
+
 button{
-  -webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;
+
+  -webkit-tap-highlight-color:
+    transparent;
+
+  touch-action:
+    manipulation;
+
 }
 
 
 /* =========================================================
-   MAIN DISPLAY
+   MAIN APP
    ========================================================= */
 
 .tv{
+
   position:relative;
+
   width:100vw;
-  height:var(--app-height);
+
+  height:
+    var(--app-height);
+
   overflow:hidden;
 
-  background:
-    radial-gradient(
-      ellipse at center,
-      rgba(76,61,35,.18),
-      transparent 58%
-    ),
-    linear-gradient(
-      180deg,
-      #1d180f 0%,
-      #11100b 100%
+  padding:
+    max(
+      18px,
+      3vw
     );
 
-  padding:max(18px,3vw);
+  padding-left:
+    max(
+      18px,
+      env(safe-area-inset-left)
+    );
 
-  padding-left:max(
-    18px,
-    env(safe-area-inset-left)
-  );
+  padding-right:
+    max(
+      18px,
+      env(safe-area-inset-right)
+    );
 
-  padding-right:max(
-    18px,
-    env(safe-area-inset-right)
-  );
+  padding-top:
+    max(
+      18px,
+      env(safe-area-inset-top)
+    );
 
-  padding-top:max(
-    18px,
-    env(safe-area-inset-top)
-  );
-
-  padding-bottom:max(
-    18px,
-    env(safe-area-inset-bottom)
-  );
+  padding-bottom:
+    max(
+      18px,
+      env(safe-area-inset-bottom)
+    );
 
   display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
 
-.tv:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  opacity:.18;
+  flex-direction:column;
+
+  justify-content:
+    space-between;
 
   background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255,255,255,.055) 0 1px,
-      transparent 1px 4px
+
+    radial-gradient(
+      ellipse at center,
+      rgba(83,62,34,.19),
+      transparent 58%
+    ),
+
+    linear-gradient(
+      180deg,
+      #1d180f,
+      #100d09
     );
 
-  mix-blend-mode:screen;
 }
 
-.tv:after{
+
+.tv::after{
+
   content:"";
+
   position:absolute;
+
   inset:-20%;
+
   pointer-events:none;
 
   background:
+
     radial-gradient(
       ellipse at center,
       transparent 45%,
-      rgba(0,0,0,.55) 78%
+      rgba(0,0,0,.58) 79%
     );
+
 }
 
 
@@ -123,40 +178,75 @@ button{
    ========================================================= */
 
 .weather-ambient{
+
   position:absolute;
+
   z-index:1;
+
   inset:0;
+
   pointer-events:none;
+
   opacity:0;
-  transition:opacity 1s ease;
+
+  transition:
+    opacity 1s ease;
+
 }
 
-body.weather-rain .weather-ambient{
+
+body.weather-rain
+.weather-ambient{
+
   opacity:.13;
 
   background:
+
     repeating-linear-gradient(
+
       105deg,
+
       transparent 0 15px,
-      rgba(190,210,225,.65) 16px 17px,
+
+      rgba(
+        190,
+        210,
+        225,
+        .65
+      )
+      16px 17px,
+
       transparent 18px 28px
+
     );
 
-  animation:rainMove 1.2s linear infinite;
+  animation:
+    rainMove
+    1.2s
+    linear
+    infinite;
+
 }
 
-body.weather-snow .weather-ambient{
+
+body.weather-snow
+.weather-ambient{
+
   opacity:.18;
 
   background-image:
+
     radial-gradient(
       circle,
-      rgba(255,255,255,.9) 0 1.5px,
+      rgba(255,255,255,.9)
+      0 1.5px,
       transparent 2px
     ),
+
     radial-gradient(
       circle,
-      rgba(255,255,255,.7) 0 1px,
+      rgba(255,255,255,.7)
+      0 1px,
       transparent 1.5px
     );
 
@@ -164,44 +254,101 @@ body.weather-snow .weather-ambient{
     48px 48px,
     31px 31px;
 
-  animation:snowMove 9s linear infinite;
+  animation:
+    snowMove
+    9s
+    linear
+    infinite;
+
 }
 
-body.weather-fog .weather-ambient{
-  opacity:.2;
+
+body.weather-fog
+.weather-ambient{
+
+  opacity:.20;
 
   background:
+
     linear-gradient(
+
       180deg,
+
       transparent 15%,
-      rgba(220,218,205,.18) 45%,
-      rgba(220,218,205,.08) 75%,
+
+      rgba(
+        220,
+        218,
+        205,
+        .18
+      )
+      45%,
+
+      rgba(
+        220,
+        218,
+        205,
+        .08
+      )
+      75%,
+
       transparent
+
     );
+
 }
 
-body.weather-clear .weather-ambient{
-  opacity:.1;
+
+body.weather-clear
+.weather-ambient{
+
+  opacity:.10;
 
   background:
+
     radial-gradient(
+
       circle at 82% 15%,
-      rgba(255,205,107,.7),
+
+      rgba(
+        255,
+        205,
+        107,
+        .7
+      ),
+
       transparent 26%
+
     );
+
 }
+
 
 @keyframes rainMove{
+
   from{
-    transform:translate3d(0,-20px,0);
+    transform:
+      translate3d(
+        0,
+        -20px,
+        0
+      );
   }
 
   to{
-    transform:translate3d(-14px,26px,0);
+    transform:
+      translate3d(
+        -14px,
+        26px,
+        0
+      );
   }
+
 }
 
+
 @keyframes snowMove{
+
   from{
     background-position:
       0 -30px,
@@ -213,21 +360,27 @@ body.weather-clear .weather-ambient{
       25px 110px,
       -20px 90px;
   }
+
 }
 
 
 /* =========================================================
-   TOP / BOTTOM BARS
+   TOP / FOOTER
    ========================================================= */
 
 .topbar,
 .footer{
+
   position:relative;
+
   z-index:4;
 
   display:flex;
+
   align-items:center;
-  justify-content:space-between;
+
+  justify-content:
+    space-between;
 
   gap:16px;
 
@@ -237,34 +390,53 @@ body.weather-clear .weather-ambient{
 
   text-transform:uppercase;
 
-  font-size:clamp(
-    11px,
-    1.7vw,
-    16px
-  );
+  font-size:
+    clamp(
+      11px,
+      1.7vw,
+      16px
+    );
+
 }
+
 
 .status{
+
   display:flex;
+
   align-items:center;
+
   gap:8px;
+
 }
 
+
 .dot{
+
   width:8px;
+
   height:8px;
 
   border-radius:50%;
 
   background:#6c624e;
+
 }
 
+
 .dot.online{
+
   background:#d7c391;
 
   box-shadow:
     0 0 12px
-    rgba(215,195,145,.65);
+    rgba(
+      215,
+      195,
+      145,
+      .65
+    );
+
 }
 
 
@@ -273,46 +445,71 @@ body.weather-clear .weather-ambient{
    ========================================================= */
 
 .screen{
+
   position:relative;
+
   z-index:3;
 
   flex:1;
 
   display:grid;
+
   place-items:center;
 
   min-height:0;
+
 }
 
+
 .page{
-  width:min(100%,1100px);
+
+  width:
+    min(
+      100%,
+      1100px
+    );
+
   display:none;
+
   text-align:center;
-  animation:fade .55s ease;
+
+  animation:
+    fade
+    .55s ease;
+
 }
+
 
 .page.active{
   display:block;
 }
 
+
 @keyframes fade{
+
   from{
     opacity:0;
-    transform:translateY(5px);
   }
 
   to{
     opacity:1;
-    transform:none;
   }
+
 }
 
+
+/* =========================================================
+   HOME
+   ========================================================= */
+
 .eyebrow{
-  font-size:clamp(
-    12px,
-    2vw,
-    19px
-  );
+
+  font-size:
+    clamp(
+      12px,
+      2vw,
+      19px
+    );
 
   letter-spacing:.28em;
 
@@ -321,80 +518,99 @@ body.weather-clear .weather-ambient{
   color:var(--dim);
 
   margin-bottom:18px;
+
 }
 
+
 .clock{
-  font-size:clamp(
-    62px,
-    17vw,
-    190px
-  );
+
+  font-size:
+    clamp(
+      62px,
+      17vw,
+      190px
+    );
 
   line-height:.88;
 
   letter-spacing:-.055em;
 
+  font-variant-numeric:
+    tabular-nums;
+
   text-shadow:
     0 0 24px
     var(--glow);
 
-  font-variant-numeric:
-    tabular-nums;
 }
+
 
 .ampm{
+
   font-size:.22em;
+
   letter-spacing:.08em;
+
   margin-left:.12em;
+
   color:var(--dim);
+
 }
 
+
 .date{
-  font-size:clamp(
-    18px,
-    3vw,
-    32px
-  );
+
+  font-size:
+    clamp(
+      18px,
+      3vw,
+      32px
+    );
 
   margin-top:18px;
 
   color:var(--dim);
+
 }
 
-.message{
-  font-size:clamp(
-    25px,
-    5.6vw,
-    64px
-  );
 
-  line-height:1.08;
+.message{
 
   max-width:950px;
 
-  margin:34px auto 0;
+  margin:
+    34px auto 0;
 
-  text-wrap:balance;
+  font-size:
+    clamp(
+      25px,
+      5.6vw,
+      64px
+    );
 
-  text-shadow:
-    0 0 18px
-    rgba(241,223,183,.11);
+  line-height:1.08;
+
 }
 
+
 .submessage{
-  font-size:clamp(
-    14px,
-    2.2vw,
-    22px
-  );
-
-  color:var(--dim);
-
-  margin:18px auto 0;
 
   max-width:850px;
 
+  margin:
+    18px auto 0;
+
+  color:var(--dim);
+
+  font-size:
+    clamp(
+      14px,
+      2.2vw,
+      22px
+    );
+
   line-height:1.45;
+
 }
 
 
@@ -403,27 +619,37 @@ body.weather-clear .weather-ambient{
    ========================================================= */
 
 .weather-temp{
-  font-size:clamp(
-    76px,
-    18vw,
-    190px
-  );
+
+  font-size:
+    clamp(
+      76px,
+      18vw,
+      190px
+    );
 
   line-height:.9;
+
 }
+
 
 .weather-desc{
-  font-size:clamp(
-    24px,
-    5vw,
-    56px
-  );
+
+  font-size:
+    clamp(
+      24px,
+      5vw,
+      56px
+    );
 
   margin-top:20px;
+
 }
 
+
 .weather-grid{
-  margin:35px auto 0;
+
+  margin:
+    35px auto 0;
 
   display:grid;
 
@@ -436,48 +662,70 @@ body.weather-clear .weather-ambient{
   gap:12px;
 
   max-width:800px;
+
 }
 
+
 .card{
+
   border:
     1px solid
-    rgba(241,223,183,.2);
+    rgba(
+      241,
+      223,
+      183,
+      .20
+    );
 
   background:
-    rgba(255,255,255,.025);
+    rgba(
+      255,
+      255,
+      255,
+      .025
+    );
 
   padding:
     18px 12px;
 
   border-radius:12px;
+
 }
 
+
 .card span{
+
   display:block;
 
   color:var(--dim);
 
-  font-size:clamp(
-    10px,
-    1.6vw,
-    14px
-  );
+  font-size:
+    clamp(
+      10px,
+      1.6vw,
+      14px
+    );
 
   letter-spacing:.15em;
 
   text-transform:uppercase;
 
   margin-bottom:6px;
+
 }
 
+
 .card strong{
-  font-size:clamp(
-    18px,
-    3vw,
-    28px
-  );
+
+  font-size:
+    clamp(
+      18px,
+      3vw,
+      28px
+    );
 
   font-weight:normal;
+
 }
 
 
@@ -486,17 +734,22 @@ body.weather-clear .weather-ambient{
    ========================================================= */
 
 .events{
-  width:min(
-    900px,
-    92vw
-  );
+
+  width:
+    min(
+      900px,
+      92vw
+    );
 
   display:grid;
 
   gap:12px;
+
 }
 
+
 .event{
+
   display:grid;
 
   grid-template-columns:
@@ -514,7 +767,12 @@ body.weather-clear .weather-ambient{
 
   border:
     1px solid
-    rgba(241,223,183,.16);
+    rgba(
+      241,
+      223,
+      183,
+      .16
+    );
 
   border-radius:14px;
 
@@ -522,195 +780,371 @@ body.weather-clear .weather-ambient{
     16px 20px;
 
   background:
-    rgba(255,255,255,.025);
+    rgba(
+      255,
+      255,
+      255,
+      .025
+    );
+
 }
+
 
 .event-time{
+
   color:var(--dim);
 
-  font-size:clamp(
-    14px,
-    2vw,
-    22px
-  );
+  font-size:
+    clamp(
+      14px,
+      2vw,
+      22px
+    );
 
-  line-height:1.25;
 }
+
 
 .event-title{
-  font-size:clamp(
-    22px,
-    3.6vw,
-    42px
-  );
 
-  line-height:1.06;
+  font-size:
+    clamp(
+      22px,
+      3.6vw,
+      42px
+    );
+
 }
 
+
 .event-empty{
-  font-size:clamp(
-    26px,
-    5vw,
-    52px
-  );
 
   color:var(--dim);
+
+  font-size:
+    clamp(
+      26px,
+      5vw,
+      52px
+    );
+
 }
 
 
 /* =========================================================
-   VINTAGE TV / FILM SCREEN
+   VIDEO PAGE
    ========================================================= */
 
 .video-page{
+
   position:absolute;
+
   inset:0;
 
   width:100%;
+
   max-width:none;
+
   height:100%;
 
   overflow:hidden;
 
   background:
+
     radial-gradient(
+
       circle at 50% 42%,
-      #17130d 0,
-      #090806 62%,
-      #050403 100%
+
+      #231a10,
+
+      #0c0906 70%
+
     );
+
 }
+
 
 .video-page.active{
   display:block;
 }
 
 
+/* =========================================================
+   BUILT-IN VINTAGE TV CABINET
+   ========================================================= */
+
 .vintage-tv-shell{
 
   position:absolute;
 
   left:50%;
+
   top:50%;
 
-  width:min(
-    100%,
-    calc(100vh * 1.5988)
-  );
-
-  aspect-ratio:793/496;
-
-  transform:
-    translate(-50%,-50%);
-
-  filter:
-    drop-shadow(
-      0 18px 32px
-      rgba(0,0,0,.58)
+  width:
+    min(
+      94vw,
+      calc(
+        88vh * 1.60
+      )
     );
 
-  overflow:visible;
+  aspect-ratio:
+    16 / 10;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border-radius:
+    4.5%;
+
+  background:
+
+    linear-gradient(
+
+      90deg,
+
+      rgba(
+        40,
+        18,
+        7,
+        .40
+      ),
+
+      transparent 20%,
+
+      rgba(
+        255,
+        190,
+        90,
+        .05
+      )
+      45%,
+
+      rgba(
+        26,
+        10,
+        3,
+        .45
+      )
+      85%
+
+    ),
+
+    repeating-linear-gradient(
+
+      7deg,
+
+      #4a2411
+      0 4px,
+
+      #512a15
+      5px 8px,
+
+      #42200f
+      9px 13px,
+
+      #572c15
+      14px 18px
+
+    );
+
+  border:
+    5px solid
+    #261106;
+
+  box-shadow:
+
+    inset
+    0 0 0 3px
+    rgba(
+      215,
+      154,
+      70,
+      .14
+    ),
+
+    inset
+    0 0 30px
+    rgba(
+      0,
+      0,
+      0,
+      .7
+    ),
+
+    0 28px 50px
+    rgba(
+      0,
+      0,
+      0,
+      .62
+    );
+
 }
 
 
-/*
-  The TV frame image uses a transparent CRT opening.
+/* top wood trim */
 
-  Approximate opening:
+.tv-cabinet-top{
 
-  left  = 11.28%
-  top   = 10.58%
-  width = 64.94%
-  height= 71.67%
+  position:absolute;
 
-  This positions the movie inside the wooden cabinet.
-*/
+  left:2%;
+
+  right:2%;
+
+  top:2%;
+
+  height:4%;
+
+  border-radius:
+    50%;
+
+  background:
+
+    linear-gradient(
+
+      180deg,
+
+      rgba(
+        238,
+        175,
+        90,
+        .20
+      ),
+
+      rgba(
+        34,
+        12,
+        4,
+        .20
+      )
+
+    );
+
+}
+
+
+/* =========================================================
+   CRT SCREEN
+   ========================================================= */
 
 .crt-screen{
 
   position:absolute;
 
-  left:11.28%;
-  top:10.58%;
+  left:5%;
 
-  width:64.94%;
-  height:71.67%;
+  top:8%;
+
+  width:69%;
+
+  height:78%;
 
   overflow:hidden;
 
   border-radius:
-    13% / 15%;
+    14% / 17%;
 
   background:#020201;
 
-  z-index:1;
+  border:
+    clamp(
+      7px,
+      1.4vw,
+      16px
+    )
+    solid
+    #24170d;
 
-  transform:
-    translateZ(0);
+  outline:
+    3px solid
+    #96713f;
 
   box-shadow:
 
     inset
-    0 0 32px
-    rgba(0,0,0,.7),
+    0 0 38px
+    rgba(
+      0,
+      0,
+      0,
+      .86
+    ),
 
     inset
-    0 0 10px
+    0 0 12px
     rgba(
       255,
       220,
       156,
-      var(--crt-glow,.13)
+      var(--crt-glow)
     ),
 
-    0 0 26px
+    0 0 0 5px
+    #30180b,
+
+    0 0 0 8px
+    #6e4926,
+
+    0 10px 18px
     rgba(
-      224,
-      188,
-      118,
-      .08
+      0,
+      0,
+      0,
+      .65
     );
+
 }
 
 
-/* MOVIE */
+/* =========================================================
+   MOVIE
+   ========================================================= */
 
 .media-layer{
 
   position:absolute;
 
-  inset:-1.5%;
+  inset:-2%;
 
-  width:103%;
-  height:103%;
+  width:104%;
+
+  height:104%;
 
   object-fit:cover;
 
-  background:#030302;
+  background:#000;
 
   opacity:0;
 
   transition:
     opacity
-    var(
-      --media-transition,
-      650ms
-    )
-    ease;
+    650ms ease;
 
   filter:
-    sepia(.10)
+
+    sepia(.08)
+
     saturate(.92)
+
     contrast(1.05)
+
     brightness(.94);
 
   transform:
     scale(1.015);
+
 }
+
 
 .media-layer.visible{
   opacity:1;
 }
+
 
 .media-layer.hidden-media{
   display:none;
@@ -718,7 +1152,7 @@ body.weather-clear .weather-ambient{
 
 
 /* =========================================================
-   CRT BLOOM / VIGNETTE
+   CRT VIGNETTE
    ========================================================= */
 
 .crt-bloom{
@@ -734,22 +1168,36 @@ body.weather-clear .weather-ambient{
   border-radius:inherit;
 
   background:
+
     radial-gradient(
+
       ellipse at center,
+
       transparent 52%,
-      rgba(0,0,0,.16) 73%,
-      rgba(0,0,0,.72) 100%
+
+      rgba(
+        0,
+        0,
+        0,
+        .13
+      )
+      74%,
+
+      rgba(
+        0,
+        0,
+        0,
+        .72
+      )
+      100%
+
     );
 
-  box-shadow:
-    inset
-    0 0 34px
-    rgba(238,210,155,.06);
 }
 
 
 /* =========================================================
-   CRT SCANLINES
+   SCANLINES
    ========================================================= */
 
 .crt-scanlines{
@@ -766,30 +1214,31 @@ body.weather-clear .weather-ambient{
 
   opacity:
     var(
-      --crt-scanline-opacity,
-      .16
+      --crt-scanline-opacity
     );
 
   background:
+
     repeating-linear-gradient(
 
       to bottom,
 
-      rgba(0,0,0,0)
-      0,
+      transparent
+      0 2px,
 
-      rgba(0,0,0,0)
-      2px,
-
-      rgba(20,12,6,.44)
-      3px,
-
-      rgba(20,12,6,.44)
-      4px
+      rgba(
+        18,
+        10,
+        4,
+        .48
+      )
+      3px 4px
 
     );
 
-  mix-blend-mode:multiply;
+  mix-blend-mode:
+    multiply;
+
 }
 
 
@@ -811,35 +1260,55 @@ body.weather-clear .weather-ambient{
 
   opacity:
     var(
-      --crt-glass-opacity,
-      .24
+      --crt-glass-opacity
     );
 
   background:
 
     linear-gradient(
+
       118deg,
-      rgba(255,255,255,.16)
+
+      rgba(
+        255,
+        255,
+        255,
+        .18
+      )
       0%,
 
-      rgba(255,255,255,.045)
+      rgba(
+        255,
+        255,
+        255,
+        .05
+      )
       18%,
 
       transparent
-      37%
+      39%
+
     ),
 
     radial-gradient(
+
       ellipse
-      at 44% 17%,
+      at 42% 15%,
 
-      rgba(255,235,198,.11),
+      rgba(
+        255,
+        235,
+        198,
+        .13
+      ),
 
-      transparent
-      36%
+      transparent 37%
+
     );
 
-  mix-blend-mode:screen;
+  mix-blend-mode:
+    screen;
+
 }
 
 
@@ -870,10 +1339,45 @@ body.weather-clear .weather-ambient{
   opacity:0;
 
   animation:
+
     crtFlicker
-    7.4s
-    steps(1,end)
+    8s
+    steps(
+      1,
+      end
+    )
     infinite;
+
+}
+
+
+@keyframes crtFlicker{
+
+  0%,
+  93%,
+  95%,
+  100%{
+    opacity:0;
+  }
+
+  93.4%{
+    opacity:
+      var(
+        --crt-flicker-opacity
+      );
+  }
+
+  94%{
+    opacity:.012;
+  }
+
+  94.4%{
+    opacity:
+      var(
+        --crt-flicker-opacity
+      );
+  }
+
 }
 
 
@@ -895,86 +1399,461 @@ body.crt-glass-off
 }
 
 
-@keyframes crtFlicker{
+/* =========================================================
+   RIGHT CONTROL PANEL
+   ========================================================= */
 
-  0%,
-  92%,
-  94%,
-  100%{
-    opacity:0;
-  }
+.tv-control-column{
 
-  92.5%{
-    opacity:
-      var(
-        --crt-flicker-opacity,
-        .055
-      );
-  }
+  position:absolute;
 
-  93%{
-    opacity:.015;
-  }
+  right:4.5%;
 
-  93.5%{
-    opacity:
-      var(
-        --crt-flicker-opacity,
-        .055
-      );
-  }
+  top:8%;
+
+  width:17%;
+
+  height:78%;
+
+  border-radius:
+    10px;
+
+  background:
+
+    linear-gradient(
+
+      90deg,
+
+      rgba(
+        0,
+        0,
+        0,
+        .22
+      ),
+
+      rgba(
+        255,
+        255,
+        255,
+        .035
+      ),
+
+      rgba(
+        0,
+        0,
+        0,
+        .30
+      )
+
+    ),
+
+    #32170a;
+
+  border:
+    2px solid
+    rgba(
+      177,
+      121,
+      59,
+      .45
+    );
+
+  box-shadow:
+
+    inset
+    0 0 16px
+    rgba(
+      0,
+      0,
+      0,
+      .65
+    );
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+}
+
+
+.tv-brand{
+
+  margin-top:6%;
+
+  color:#c79a59;
+
+  font-size:
+    clamp(
+      7px,
+      1vw,
+      13px
+    );
+
+  letter-spacing:.16em;
+
+  text-align:center;
+
+}
+
+
+.tv-brand span{
+
+  display:block;
+
+  margin-top:2px;
+
+  font-size:.62em;
+
+  letter-spacing:.13em;
+
 }
 
 
 /* =========================================================
-   TV CABINET IMAGE
+   TV DIALS
    ========================================================= */
 
-.tv-frame-overlay{
+.tv-dial{
+
+  position:relative;
+
+  border-radius:50%;
+
+  background:
+
+    radial-gradient(
+
+      circle,
+
+      #2b251d 0 42%,
+
+      #766045 44% 49%,
+
+      #211b15 51% 68%,
+
+      #a17c4d 70% 73%,
+
+      #22170e 75%
+
+    );
+
+  box-shadow:
+
+    inset
+    0 0 10px
+    rgba(
+      0,
+      0,
+      0,
+      .8
+    ),
+
+    0 3px 7px
+    rgba(
+      0,
+      0,
+      0,
+      .75
+    );
+
+}
+
+
+.tv-dial-large{
+
+  width:
+    min(
+      9vw,
+      82px
+    );
+
+  height:
+    min(
+      9vw,
+      82px
+    );
+
+  margin-top:8%;
+
+}
+
+
+.tv-dial-small{
+
+  width:
+    min(
+      5.2vw,
+      46px
+    );
+
+  height:
+    min(
+      5.2vw,
+      46px
+    );
+
+}
+
+
+.dial-center{
 
   position:absolute;
 
-  z-index:8;
+  left:50%;
 
-  inset:0;
+  top:50%;
 
-  width:100%;
-  height:100%;
+  width:41%;
 
-  object-fit:contain;
+  height:41%;
 
-  pointer-events:none;
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
 
-  user-select:none;
+  border-radius:50%;
 
-  -webkit-user-drag:none;
+  background:
 
-  transition:
-    opacity .28s ease;
+    radial-gradient(
+
+      circle at 35% 30%,
+
+      #aa8a61,
+
+      #53402d 55%,
+
+      #241a12
+
+    );
+
+  border:
+    1px solid
+    #b49163;
+
 }
 
 
-/* FRAME OFF MODE */
+.dial-center.small{
 
-.vintage-tv-shell.frame-off
-.tv-frame-overlay,
+  width:54%;
 
-.vintage-tv-shell.frame-off
-.tv-power-led{
-  opacity:0;
+  height:54%;
+
 }
 
 
-.vintage-tv-shell.frame-off
-.crt-screen{
+.dial-pointer{
 
-  left:3%;
-  top:3%;
+  position:absolute;
 
-  width:94%;
-  height:94%;
+  width:3px;
 
-  border-radius:5%;
+  height:42%;
+
+  background:#e3c995;
+
+  left:50%;
+
+  top:5%;
+
+  transform:
+    translateX(-50%)
+    rotate(18deg);
+
+  transform-origin:
+    50% 100%;
+
+}
+
+
+.dial-pointer.tuning{
+
+  transform:
+    translateX(-50%)
+    rotate(-32deg);
+
+}
+
+
+.dial-mark{
+
+  position:absolute;
+
+  color:#cdb182;
+
+  font-size:
+    clamp(
+      6px,
+      .62vw,
+      9px
+    );
+
+}
+
+
+.mark-1{
+  left:20%;
+  top:11%;
+}
+
+.mark-2{
+  right:20%;
+  top:11%;
+}
+
+.mark-3{
+  right:6%;
+  top:44%;
+}
+
+.mark-4{
+  right:19%;
+  bottom:9%;
+}
+
+.mark-5{
+  left:19%;
+  bottom:9%;
+}
+
+.mark-6{
+  left:6%;
+  top:44%;
+}
+
+
+.dial-label{
+
+  margin-top:4px;
+
+  color:#9f8055;
+
+  font-size:
+    clamp(
+      5px,
+      .65vw,
+      8px
+    );
+
+  letter-spacing:.15em;
+
+}
+
+
+.small-control{
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  margin-top:7%;
+
+}
+
+
+/* =========================================================
+   SPEAKER
+   ========================================================= */
+
+.tv-speaker{
+
+  width:72%;
+
+  height:25%;
+
+  margin-top:auto;
+
+  margin-bottom:4%;
+
+  padding:
+    6px 5px;
+
+  border-radius:5px;
+
+  border:
+    1px solid
+    rgba(
+      181,
+      132,
+      73,
+      .40
+    );
+
+  background:
+
+    linear-gradient(
+
+      90deg,
+
+      #20140d,
+
+      #372217,
+
+      #1c110b
+
+    );
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:
+    space-around;
+
+  box-shadow:
+
+    inset
+    0 0 10px
+    rgba(
+      0,
+      0,
+      0,
+      .85
+    );
+
+}
+
+
+.tv-speaker span{
+
+  display:block;
+
+  height:2px;
+
+  border-radius:5px;
+
+  background:
+    #9f774a;
+
+  opacity:.56;
+
+}
+
+
+.speaker-label{
+
+  position:absolute;
+
+  bottom:1.5%;
+
+  color:#87643e;
+
+  font-size:
+    clamp(
+      4px,
+      .48vw,
+      7px
+    );
+
+  letter-spacing:.10em;
+
 }
 
 
@@ -986,68 +1865,201 @@ body.crt-glass-off
 
   position:absolute;
 
-  z-index:9;
+  right:12.2%;
 
-  right:17.05%;
+  bottom:7%;
 
-  top:51.9%;
+  z-index:10;
 
-  width:5px;
-  height:5px;
+  width:
+    clamp(
+      4px,
+      .6vw,
+      7px
+    );
+
+  height:
+    clamp(
+      4px,
+      .6vw,
+      7px
+    );
 
   border-radius:50%;
 
-  background:#c79345;
+  background:#d59a42;
 
   box-shadow:
 
     0 0 5px
-    rgba(255,196,90,.75),
+    rgba(
+      255,
+      199,
+      99,
+      .9
+    ),
 
-    0 0 12px
-    rgba(255,163,54,.32);
+    0 0 11px
+    rgba(
+      255,
+      155,
+      45,
+      .40
+    );
 
-  pointer-events:none;
-}
-
-
-body.quiet-mode
-.tv-power-led{
-  opacity:.4;
 }
 
 
 /* =========================================================
-   FILM LABEL
+   TV FEET
+   ========================================================= */
+
+.tv-foot{
+
+  position:absolute;
+
+  bottom:-4.5%;
+
+  width:13%;
+
+  height:7%;
+
+  border-radius:
+    0 0 20px 20px;
+
+  background:
+
+    linear-gradient(
+
+      90deg,
+
+      #2e1308,
+
+      #5a2c14,
+
+      #2d1208
+
+    );
+
+  border:
+    2px solid
+    #241006;
+
+  z-index:-1;
+
+}
+
+
+.tv-foot-left{
+  left:12%;
+}
+
+
+.tv-foot-right{
+  right:12%;
+}
+
+
+/* =========================================================
+   REMOVE EXTERNAL TV PNG ENTIRELY
+   ========================================================= */
+
+.tv-frame-overlay{
+
+  display:none!important;
+
+}
+
+
+/* =========================================================
+   FRAME OFF
+   ========================================================= */
+
+.vintage-tv-shell.frame-off{
+
+  background:transparent;
+
+  border:0;
+
+  box-shadow:none;
+
+}
+
+
+.vintage-tv-shell.frame-off
+.tv-cabinet-top,
+
+.vintage-tv-shell.frame-off
+.tv-control-column,
+
+.vintage-tv-shell.frame-off
+.tv-power-led,
+
+.vintage-tv-shell.frame-off
+.tv-foot{
+
+  display:none;
+
+}
+
+
+.vintage-tv-shell.frame-off
+.crt-screen{
+
+  left:3%;
+
+  top:3%;
+
+  width:94%;
+
+  height:94%;
+
+  border-radius:5%;
+
+}
+
+
+/* =========================================================
+   VIDEO LABEL
    ========================================================= */
 
 .video-label{
 
   position:absolute;
 
-  z-index:12;
+  z-index:20;
 
   left:max(
     18px,
-    12vw
+    7vw
   );
 
   bottom:max(
     14px,
-    4vh
+    3vh
   );
 
   padding:
-    7px 10px;
+    7px 11px;
 
   border:
     1px solid
-    rgba(241,223,183,.22);
+    rgba(
+      241,
+      223,
+      183,
+      .22
+    );
 
   border-radius:999px;
 
   background:
-    rgba(12,10,7,.68);
+    rgba(
+      12,
+      10,
+      7,
+      .68
+    );
 
   color:var(--dim);
 
@@ -1057,8 +2069,6 @@ body.quiet-mode
 
   text-transform:uppercase;
 
-  backdrop-filter:
-    blur(5px);
 }
 
 
@@ -1082,26 +2092,34 @@ body.quiet-mode
 
   color:var(--dim);
 
-  font-size:clamp(
-    16px,
-    2.6vw,
-    30px
-  );
+  font-size:
+    clamp(
+      16px,
+      2.6vw,
+      30px
+    );
 
   line-height:1.35;
 
   background:
+
     radial-gradient(
+
       circle at 45% 40%,
+
       #443522,
+
       transparent 44%
+
     ),
+
     #0b0906;
+
 }
 
 
 /* =========================================================
-   CONTROL BUTTON
+   MENU BUTTON
    ========================================================= */
 
 .control-toggle{
@@ -1110,27 +2128,44 @@ body.quiet-mode
 
   z-index:40;
 
-  right:max(
-    14px,
-    env(safe-area-inset-right)
-  );
+  right:
+    max(
+      14px,
+      env(
+        safe-area-inset-right
+      )
+    );
 
-  bottom:max(
-    14px,
-    env(safe-area-inset-bottom)
-  );
+  bottom:
+    max(
+      14px,
+      env(
+        safe-area-inset-bottom
+      )
+    );
 
   width:54px;
+
   height:54px;
 
   border:
     1px solid
-    rgba(241,223,183,.38);
+    rgba(
+      241,
+      223,
+      183,
+      .38
+    );
 
   border-radius:50%;
 
   background:
-    rgba(15,13,9,.86);
+    rgba(
+      15,
+      13,
+      9,
+      .86
+    );
 
   color:var(--cream);
 
@@ -1143,16 +2178,20 @@ body.quiet-mode
   place-items:center;
 
   box-shadow:
-    0 6px 24px
-    rgba(0,0,0,.35);
 
-  backdrop-filter:
-    blur(8px);
+    0 6px 24px
+    rgba(
+      0,
+      0,
+      0,
+      .35
+    );
 
   cursor:pointer;
 
   transition:
     opacity .25s ease;
+
 }
 
 
@@ -1162,7 +2201,7 @@ body.quiet-mode
 
 
 /* =========================================================
-   CONTROL MENU
+   CONTROL PANEL
    ========================================================= */
 
 .control-panel{
@@ -1171,43 +2210,64 @@ body.quiet-mode
 
   z-index:39;
 
-  right:max(
-    14px,
-    env(safe-area-inset-right)
-  );
+  right:
+    max(
+      14px,
+      env(
+        safe-area-inset-right
+      )
+    );
 
-  bottom:max(
-    78px,
-    calc(
-      env(safe-area-inset-bottom)
-      + 78px
-    )
-  );
+  bottom:
+    max(
+      78px,
+      calc(
+        env(
+          safe-area-inset-bottom
+        )
+        +
+        78px
+      )
+    );
 
-  width:min(
-    390px,
-    calc(
-      100vw - 28px
-    )
-  );
+  width:
+    min(
+      390px,
+      calc(
+        100vw - 28px
+      )
+    );
 
   padding:12px;
 
   border:
     1px solid
-    rgba(241,223,183,.28);
+    rgba(
+      241,
+      223,
+      183,
+      .28
+    );
 
   border-radius:16px;
 
   background:
-    rgba(12,10,7,.95);
+    rgba(
+      12,
+      10,
+      7,
+      .95
+    );
 
   box-shadow:
-    0 14px 45px
-    rgba(0,0,0,.46);
 
-  backdrop-filter:
-    blur(12px);
+    0 14px 45px
+    rgba(
+      0,
+      0,
+      0,
+      .46
+    );
 
   opacity:0;
 
@@ -1218,8 +2278,11 @@ body.quiet-mode
   pointer-events:none;
 
   transition:
+
     opacity .18s ease,
+
     transform .18s ease;
+
 }
 
 
@@ -1230,6 +2293,7 @@ body.quiet-mode
   transform:none;
 
   pointer-events:auto;
+
 }
 
 
@@ -1239,7 +2303,8 @@ body.quiet-mode
 
   align-items:center;
 
-  justify-content:space-between;
+  justify-content:
+    space-between;
 
   color:var(--dim);
 
@@ -1251,6 +2316,7 @@ body.quiet-mode
 
   padding:
     2px 2px 10px;
+
 }
 
 
@@ -1261,10 +2327,14 @@ body.quiet-mode
   grid-template-columns:
     repeat(
       2,
-      minmax(0,1fr)
+      minmax(
+        0,
+        1fr
+      )
     );
 
   gap:8px;
+
 }
 
 
@@ -1274,12 +2344,22 @@ body.quiet-mode
 
   border:
     1px solid
-    rgba(241,223,183,.2);
+    rgba(
+      241,
+      223,
+      183,
+      .20
+    );
 
   border-radius:11px;
 
   background:
-    rgba(255,255,255,.035);
+    rgba(
+      255,
+      255,
+      255,
+      .035
+    );
 
   color:var(--cream);
 
@@ -1287,20 +2367,26 @@ body.quiet-mode
 
   font-size:13px;
 
-  letter-spacing:.03em;
-
   padding:9px;
 
   cursor:pointer;
+
 }
 
 
 .control-btn:active{
 
-  transform:scale(.98);
+  transform:
+    scale(.98);
 
   background:
-    rgba(241,223,183,.12);
+    rgba(
+      241,
+      223,
+      183,
+      .12
+    );
+
 }
 
 
@@ -1310,7 +2396,7 @@ body.quiet-mode
 
 
 /* =========================================================
-   SYSTEM STATUS
+   HEALTH PANEL
    ========================================================= */
 
 .health{
@@ -1328,7 +2414,13 @@ body.quiet-mode
   padding:20px;
 
   background:
-    rgba(0,0,0,.62);
+    rgba(
+      0,
+      0,
+      0,
+      .62
+    );
+
 }
 
 
@@ -1339,10 +2431,11 @@ body.quiet-mode
 
 .health-card{
 
-  width:min(
-    620px,
-    94vw
-  );
+  width:
+    min(
+      620px,
+      94vw
+    );
 
   max-height:88vh;
 
@@ -1350,7 +2443,12 @@ body.quiet-mode
 
   border:
     1px solid
-    rgba(241,223,183,.3);
+    rgba(
+      241,
+      223,
+      183,
+      .30
+    );
 
   border-radius:18px;
 
@@ -1359,8 +2457,15 @@ body.quiet-mode
   padding:18px;
 
   box-shadow:
+
     0 20px 70px
-    rgba(0,0,0,.6);
+    rgba(
+      0,
+      0,
+      0,
+      .60
+    );
+
 }
 
 
@@ -1368,11 +2473,13 @@ body.quiet-mode
 
   display:flex;
 
-  justify-content:space-between;
+  justify-content:
+    space-between;
 
   align-items:center;
 
   margin-bottom:14px;
+
 }
 
 
@@ -1389,7 +2496,12 @@ body.quiet-mode
 
   border:
     1px solid
-    rgba(241,223,183,.2);
+    rgba(
+      241,
+      223,
+      183,
+      .20
+    );
 
   border-radius:50%;
 
@@ -1398,6 +2510,7 @@ body.quiet-mode
   color:var(--cream);
 
   font-size:22px;
+
 }
 
 
@@ -1416,6 +2529,7 @@ body.quiet-mode
     sans-serif;
 
   font-size:13px;
+
 }
 
 
@@ -1428,7 +2542,9 @@ body.quiet-mode
 
   margin:0;
 
-  word-break:break-word;
+  word-break:
+    break-word;
+
 }
 
 
@@ -1445,6 +2561,7 @@ body.quiet-mode
   gap:8px;
 
   margin-top:16px;
+
 }
 
 
@@ -1456,9 +2573,13 @@ body.quiet-mode
   display:none!important;
 }
 
+
 .burn-shift{
+
   transition:
-    transform 1.2s ease;
+    transform
+    1.2s ease;
+
 }
 
 
@@ -1469,6 +2590,15 @@ body.quiet-mode
 .footer{
 
   opacity:.38;
+
+}
+
+
+body.quiet-mode
+.tv-power-led{
+
+  opacity:.35;
+
 }
 
 
@@ -1476,147 +2606,152 @@ body.quiet-mode
    FIRE TABLET LANDSCAPE
    ========================================================= */
 
-@media(
+@media
+(
   orientation:landscape
 )
 and
-(max-height:900px){
+(
+  max-height:900px
+){
 
   .tv{
+
     padding:
-      16px 24px;
+      15px 22px;
+
   }
+
 
   .topbar,
   .footer{
-    font-size:clamp(
-      10px,
-      1.3vw,
-      14px
-    );
+
+    font-size:
+      clamp(
+        10px,
+        1.3vw,
+        14px
+      );
+
   }
+
 
   .eyebrow{
-    font-size:clamp(
-      11px,
-      1.5vw,
-      16px
-    );
 
     margin-bottom:10px;
+
   }
+
 
   .clock{
-    font-size:clamp(
-      64px,
-      14vw,
-      150px
-    );
+
+    font-size:
+      clamp(
+        64px,
+        14vw,
+        150px
+      );
+
   }
+
 
   .date{
-    font-size:clamp(
-      16px,
-      2.3vw,
-      26px
-    );
 
     margin-top:10px;
+
   }
+
 
   .message{
-    font-size:clamp(
-      22px,
-      4vw,
-      48px
-    );
 
     margin-top:18px;
+
   }
+
 
   .submessage{
-    font-size:clamp(
-      13px,
-      1.8vw,
-      19px
-    );
 
     margin-top:10px;
+
   }
 
-  .weather-temp{
-    font-size:clamp(
-      72px,
-      14vw,
-      150px
-    );
-  }
-
-  .weather-desc{
-    font-size:clamp(
-      22px,
-      3.8vw,
-      46px
-    );
-
-    margin-top:10px;
-  }
 
   .weather-grid{
+
     margin-top:18px;
+
   }
+
 
   .card{
+
     padding:
       11px 9px;
+
   }
 
-  .events{
-    gap:8px;
-  }
 
   .event{
+
     padding:
       11px 15px;
+
   }
 
+
   .control-btn{
+
     min-height:46px;
+
   }
+
 }
 
 
-@media(max-width:650px){
+/* =========================================================
+   SMALL SCREENS
+   ========================================================= */
+
+@media
+(
+  max-width:650px
+){
 
   .tv{
     padding:15px;
   }
 
+
   .footer{
     font-size:10px;
   }
 
-  .weather-grid{
-    grid-template-columns:
-      repeat(
-        3,
-        1fr
-      );
-  }
 
   .health-grid{
+
     grid-template-columns:
       120px 1fr;
+
   }
+
 }
 
 
-@media(
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media
+(
   prefers-reduced-motion:reduce
 ){
 
   *{
+
     animation:none!important;
+
     transition:none!important;
+
   }
+
 }

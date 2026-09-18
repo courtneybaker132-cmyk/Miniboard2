@@ -1,10 +1,6 @@
-// Mini Vestaboard v3.2 configuration
-// Main settings live here.
-// The HTML, CSS and app logic are now separate files.
-
 window.SMART_DISPLAY_CONFIG = {
 
-  appVersion: "3.2.0",
+  appVersion: "3.2.3",
 
   displayName: "HOME TV",
 
@@ -85,20 +81,8 @@ window.SMART_DISPLAY_CONFIG = {
 
 
   // =========================================================
-  // AUDIO MODE
+  // AUDIO
   // =========================================================
-  //
-  // cinema
-  //   Piano plays on Home / Weather / Calendar.
-  //   Original cartoon soundtrack plays on film screen.
-  //
-  // music
-  //   Piano continues on all screens.
-  //   Cartoon soundtrack is muted.
-  //
-  // silent
-  //   No background audio.
-  //
 
   audio: {
 
@@ -106,7 +90,6 @@ window.SMART_DISPLAY_CONFIG = {
 
     fadeMs: 900,
 
-    // Volume of original cartoon soundtrack
     filmVolume: 0.72
   },
 
@@ -126,7 +109,7 @@ window.SMART_DISPLAY_CONFIG = {
 
 
   // =========================================================
-  // BACKGROUND PIANO
+  // PIANO
   // =========================================================
 
   daytimeMusic: {
@@ -265,46 +248,50 @@ window.SMART_DISPLAY_CONFIG = {
         "media/fall-cartoon-painted-leaves.mp4"
 
       ]
+
     }
+
   },
 
 
   // =========================================================
-  // VINTAGE TV CABINET
+  // BUILT-IN TV FRAME
   // =========================================================
+  //
+  // No external PNG is required anymore.
+  //
+  // The entire television is drawn by CSS.
+  //
 
   tvFrame: {
 
     enabled: true,
 
-    image: "media/vintage-tv-frame.png"
+    image: ""
+
   },
 
 
   // =========================================================
   // CRT EFFECTS
   // =========================================================
-  //
-  // These are intentionally subtle.
-  //
-  // You can change these later without touching CSS.
-  //
 
   crt: {
 
     scanlines: true,
 
-    scanlineOpacity: 0.16,
+    scanlineOpacity: 0.12,
 
     glass: true,
 
-    glassOpacity: 0.24,
+    glassOpacity: 0.20,
 
     flicker: true,
 
-    flickerOpacity: 0.055,
+    flickerOpacity: 0.035,
 
-    glow: 0.13
+    glow: 0.15
+
   },
 
 
@@ -321,11 +308,12 @@ window.SMART_DISPLAY_CONFIG = {
     requestLandscapeOnFullscreen: true,
 
     manualHoldSeconds: 90
+
   },
 
 
   // =========================================================
-  // AUTO RECOVERY
+  // RECOVERY
   // =========================================================
 
   recovery: {
@@ -337,6 +325,7 @@ window.SMART_DISPLAY_CONFIG = {
     mediaStallSeconds: 15,
 
     reloadAfterConsecutiveFailures: 8
+
   }
 
 };

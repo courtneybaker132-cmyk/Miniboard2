@@ -2,318 +2,673 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"
+  >
+
   <meta name="theme-color" content="#17130d">
 
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
 
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta
+    http-equiv="Cache-Control"
+    content="no-cache, no-store, must-revalidate"
+  >
+
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
   <title>Mini Vestaboard</title>
 
-  <link rel="stylesheet" href="styles.css?v=20260918-v32">
-  <script src="config.js?v=20260918-v32"></script>
+  <link
+    rel="stylesheet"
+    href="styles.css?v=20260918-v323"
+  >
+
+  <script
+    src="config.js?v=20260918-v323">
+  </script>
+
 </head>
 
 <body>
 
-  <main class="tv" id="tv">
+<main class="tv" id="tv">
 
-    <div class="weather-ambient" aria-hidden="true"></div>
+  <div
+    class="weather-ambient"
+    aria-hidden="true">
+  </div>
 
-    <header class="topbar">
-      <div id="displayName">HOME TV</div>
 
-      <div class="status">
-        <span class="dot" id="syncDot"></span>
-        <span id="syncLabel">STARTING</span>
+  <!-- ======================================================
+       TOP BAR
+       ====================================================== -->
+
+  <header class="topbar">
+
+    <div id="displayName">
+      HOME TV
+    </div>
+
+    <div class="status">
+
+      <span
+        class="dot"
+        id="syncDot">
+      </span>
+
+      <span id="syncLabel">
+        STARTING
+      </span>
+
+    </div>
+
+  </header>
+
+
+  <!-- ======================================================
+       MAIN SCREEN
+       ====================================================== -->
+
+  <section
+    class="screen burn-shift"
+    id="screen">
+
+
+    <!-- HOME -->
+
+    <div
+      class="page active"
+      data-page="home">
+
+      <div
+        class="eyebrow"
+        id="daypart">
+        Good morning
       </div>
-    </header>
 
-    <section class="screen burn-shift" id="screen">
+      <div class="clock">
 
-      <!-- HOME -->
-      <div class="page active" data-page="home">
+        <span id="clock">
+          --:--
+        </span>
 
-        <div class="eyebrow" id="daypart">
-          Good morning
-        </div>
-
-        <div class="clock">
-          <span id="clock">--:--</span>
-          <span class="ampm" id="ampm"></span>
-        </div>
-
-        <div class="date" id="date"></div>
-
-        <div class="message" id="mainMessage"></div>
-
-        <div class="submessage" id="contextMessage"></div>
+        <span
+          class="ampm"
+          id="ampm">
+        </span>
 
       </div>
 
+      <div
+        class="date"
+        id="date">
+      </div>
 
-      <!-- WEATHER -->
-      <div class="page" data-page="weather">
+      <div
+        class="message"
+        id="mainMessage">
+      </div>
 
-        <div class="eyebrow" id="weatherLocation">
-          Weather
+      <div
+        class="submessage"
+        id="contextMessage">
+      </div>
+
+    </div>
+
+
+    <!-- WEATHER -->
+
+    <div
+      class="page"
+      data-page="weather">
+
+      <div
+        class="eyebrow"
+        id="weatherLocation">
+        Weather
+      </div>
+
+      <div
+        class="weather-temp"
+        id="weatherTemp">
+        --°
+      </div>
+
+      <div
+        class="weather-desc"
+        id="weatherDesc">
+        Updating weather…
+      </div>
+
+      <div class="weather-grid">
+
+        <div class="card">
+
+          <span>
+            Feels like
+          </span>
+
+          <strong id="feelsLike">
+            --°
+          </strong>
+
         </div>
 
-        <div class="weather-temp" id="weatherTemp">
-          --°
+
+        <div class="card">
+
+          <span>
+            Today
+          </span>
+
+          <strong id="hiLow">
+            -- / --
+          </strong>
+
         </div>
 
-        <div class="weather-desc" id="weatherDesc">
-          Updating weather…
+
+        <div class="card">
+
+          <span>
+            Rain
+          </span>
+
+          <strong id="rainChance">
+            --%
+          </strong>
+
         </div>
 
-        <div class="weather-grid">
+      </div>
 
-          <div class="card">
-            <span>Feels like</span>
-            <strong id="feelsLike">--°</strong>
+    </div>
+
+
+    <!-- CALENDAR -->
+
+    <div
+      class="page"
+      data-page="calendar">
+
+      <div class="eyebrow">
+        Coming up
+      </div>
+
+      <div
+        class="events"
+        id="eventList">
+      </div>
+
+    </div>
+
+
+    <!-- ====================================================
+         VINTAGE TV
+         ==================================================== -->
+
+    <div
+      class="page video-page"
+      data-page="video">
+
+
+      <div
+        class="vintage-tv-shell"
+        id="vintageTvShell">
+
+
+        <!-- WOOD CABINET DETAILS -->
+
+        <div
+          class="tv-cabinet-top"
+          aria-hidden="true">
+        </div>
+
+
+        <!-- CRT -->
+
+        <div
+          class="crt-screen"
+          id="crtScreen">
+
+
+          <video
+            id="videoA"
+            class="media-layer"
+            muted
+            playsinline
+            preload="auto">
+          </video>
+
+
+          <video
+            id="videoB"
+            class="media-layer"
+            muted
+            playsinline
+            preload="auto">
+          </video>
+
+
+          <img
+            id="imageLayer"
+            class="media-layer hidden-media"
+            alt="Vintage display media"
+          >
+
+
+          <!-- CRT VIGNETTE -->
+
+          <div
+            class="crt-bloom"
+            aria-hidden="true">
           </div>
 
-          <div class="card">
-            <span>Today</span>
-            <strong id="hiLow">-- / --</strong>
+
+          <!-- SCANLINES -->
+
+          <div
+            class="crt-scanlines"
+            aria-hidden="true">
           </div>
 
-          <div class="card">
-            <span>Rain</span>
-            <strong id="rainChance">--%</strong>
+
+          <!-- GLASS REFLECTION -->
+
+          <div
+            class="crt-glass"
+            aria-hidden="true">
+          </div>
+
+
+          <!-- SUBTLE FLICKER -->
+
+          <div
+            class="crt-flicker"
+            aria-hidden="true">
+          </div>
+
+
+          <div
+            class="video-empty"
+            id="videoEmpty">
+            Loading vintage media…
           </div>
 
         </div>
 
-      </div>
+
+        <!-- =================================================
+             BUILT-IN TV CONTROLS
+             ================================================= -->
+
+        <div
+          class="tv-control-column"
+          aria-hidden="true">
 
 
-      <!-- CALENDAR -->
-      <div class="page" data-page="calendar">
-
-        <div class="eyebrow">
-          Coming up
-        </div>
-
-        <div class="events" id="eventList"></div>
-
-      </div>
+          <div class="tv-brand">
+            HOME
+            <span>TELEVISION</span>
+          </div>
 
 
-      <!-- VINTAGE FILM -->
-      <div class="page video-page" data-page="video">
+          <!-- BIG CHANNEL DIAL -->
 
-        <div class="vintage-tv-shell" id="vintageTvShell">
+          <div class="tv-dial tv-dial-large">
 
-          <div class="crt-screen" id="crtScreen">
+            <div class="dial-mark mark-1">2</div>
+            <div class="dial-mark mark-2">4</div>
+            <div class="dial-mark mark-3">6</div>
+            <div class="dial-mark mark-4">8</div>
+            <div class="dial-mark mark-5">10</div>
+            <div class="dial-mark mark-6">12</div>
 
-            <video
-              id="videoA"
-              class="media-layer"
-              muted
-              playsinline
-              preload="auto">
-            </video>
-
-            <video
-              id="videoB"
-              class="media-layer"
-              muted
-              playsinline
-              preload="auto">
-            </video>
-
-            <img
-              id="imageLayer"
-              class="media-layer hidden-media"
-              alt="Vintage display media">
-
-            <!-- CRT EFFECTS -->
-            <div class="crt-bloom" aria-hidden="true"></div>
-            <div class="crt-scanlines" aria-hidden="true"></div>
-            <div class="crt-glass" aria-hidden="true"></div>
-            <div class="crt-flicker" aria-hidden="true"></div>
-
-            <div class="video-empty" id="videoEmpty">
-              Loading vintage media…
+            <div class="dial-center">
+              <div class="dial-pointer"></div>
             </div>
 
           </div>
 
-          <!-- TV CABINET -->
-          <img
-            id="tvFrameOverlay"
-            class="tv-frame-overlay"
-            alt="Vintage television frame">
 
-          <span
-            class="tv-power-led"
-            id="tvPowerLed"
-            aria-hidden="true">
-          </span>
-
-        </div>
-
-        <div class="video-label" id="videoLabel">
-          Vintage cartoons
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <footer class="footer">
-      <div id="footerLeft">
-        Mini Vestaboard
-      </div>
-
-      <div id="footerRight">
-        AUTO
-      </div>
-    </footer>
-
-
-    <!-- MENU BUTTON -->
-    <button
-      class="control-toggle"
-      id="controlToggle"
-      aria-label="Open display controls"
-      aria-expanded="false">
-      ☰
-    </button>
-
-
-    <!-- CONTROL PANEL -->
-    <div
-      class="control-panel"
-      id="controlPanel"
-      role="dialog"
-      aria-label="Display controls">
-
-      <div class="control-title">
-        <span>Display controls</span>
-        <span id="controlStatus">AUTO</span>
-      </div>
-
-      <div class="control-grid">
-
-        <button class="control-btn" data-go="home">
-          Home
-        </button>
-
-        <button class="control-btn" data-go="weather">
-          Weather
-        </button>
-
-        <button class="control-btn" data-go="calendar">
-          Calendar
-        </button>
-
-        <button class="control-btn" data-go="video">
-          Scene
-        </button>
-
-        <button class="control-btn" id="nextMediaButton">
-          Next media
-        </button>
-
-        <button class="control-btn" id="soundButton">
-          Enable sound
-        </button>
-
-        <button class="control-btn" id="audioModeButton">
-          Audio: Cinema
-        </button>
-
-        <button class="control-btn" id="frameButton">
-          TV Frame: On
-        </button>
-
-        <button class="control-btn" id="fullscreenButton">
-          Fullscreen
-        </button>
-
-        <button class="control-btn" id="healthButton">
-          System status
-        </button>
-
-        <button class="control-btn wide" id="nextScreenButton">
-          Next screen
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- SYSTEM STATUS -->
-    <div
-      class="health"
-      id="healthPanel"
-      role="dialog"
-      aria-modal="true"
-      aria-label="System status">
-
-      <div class="health-card">
-
-        <div class="health-head">
-
-          <div class="health-title">
-            Mini Vestaboard status
+          <div class="dial-label">
+            CHANNEL
           </div>
 
-          <button
-            class="health-close"
-            id="healthClose"
-            aria-label="Close">
-            ×
-          </button>
+
+          <!-- SMALL VOLUME DIAL -->
+
+          <div class="small-control">
+
+            <div class="tv-dial tv-dial-small">
+
+              <div class="dial-center small">
+
+                <div class="dial-pointer"></div>
+
+              </div>
+
+            </div>
+
+            <div class="dial-label">
+              VOLUME
+            </div>
+
+          </div>
+
+
+          <!-- SMALL TUNING DIAL -->
+
+          <div class="small-control">
+
+            <div class="tv-dial tv-dial-small">
+
+              <div class="dial-center small">
+
+                <div class="dial-pointer tuning"></div>
+
+              </div>
+
+            </div>
+
+            <div class="dial-label">
+              TUNING
+            </div>
+
+          </div>
+
+
+          <!-- SPEAKER -->
+
+          <div class="tv-speaker">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+          </div>
+
+
+          <div class="speaker-label">
+            VACUUM TUBE SOUND
+          </div>
 
         </div>
 
-        <dl
-          class="health-grid"
-          id="healthGrid">
-        </dl>
 
-        <div class="health-actions">
+        <!-- POWER LIGHT -->
 
-          <button
-            class="control-btn"
-            id="retryMediaButton">
-            Retry media
-          </button>
+        <span
+          class="tv-power-led"
+          id="tvPowerLed"
+          aria-hidden="true">
+        </span>
 
-          <button
-            class="control-btn"
-            id="reloadButton">
-            Reload app
-          </button>
 
+        <!-- WOOD FEET -->
+
+        <div
+          class="tv-foot tv-foot-left"
+          aria-hidden="true">
         </div>
+
+        <div
+          class="tv-foot tv-foot-right"
+          aria-hidden="true">
+        </div>
+
+
+        <!--
+          Retained for compatibility with app.js.
+
+          It no longer loads an external image.
+          Therefore the broken-image question mark
+          cannot appear.
+        -->
+
+        <img
+          id="tvFrameOverlay"
+          class="tv-frame-overlay"
+          alt=""
+          aria-hidden="true"
+        >
+
+      </div>
+
+
+      <div
+        class="video-label"
+        id="videoLabel">
+        Vintage cartoons
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       FOOTER
+       ====================================================== -->
+
+  <footer class="footer">
+
+    <div id="footerLeft">
+      Mini Vestaboard
+    </div>
+
+    <div id="footerRight">
+      AUTO
+    </div>
+
+  </footer>
+
+
+  <!-- ======================================================
+       CONTROL BUTTON
+       ====================================================== -->
+
+  <button
+    class="control-toggle"
+    id="controlToggle"
+    aria-label="Open display controls"
+    aria-expanded="false">
+    ☰
+  </button>
+
+
+  <!-- ======================================================
+       CONTROL PANEL
+       ====================================================== -->
+
+  <div
+    class="control-panel"
+    id="controlPanel"
+    role="dialog"
+    aria-label="Display controls">
+
+
+    <div class="control-title">
+
+      <span>
+        Display controls
+      </span>
+
+      <span id="controlStatus">
+        AUTO
+      </span>
+
+    </div>
+
+
+    <div class="control-grid">
+
+      <button
+        class="control-btn"
+        data-go="home">
+        Home
+      </button>
+
+
+      <button
+        class="control-btn"
+        data-go="weather">
+        Weather
+      </button>
+
+
+      <button
+        class="control-btn"
+        data-go="calendar">
+        Calendar
+      </button>
+
+
+      <button
+        class="control-btn"
+        data-go="video">
+        Scene
+      </button>
+
+
+      <button
+        class="control-btn"
+        id="nextMediaButton">
+        Next media
+      </button>
+
+
+      <button
+        class="control-btn"
+        id="soundButton">
+        Enable sound
+      </button>
+
+
+      <button
+        class="control-btn"
+        id="audioModeButton">
+        Audio: Cinema
+      </button>
+
+
+      <button
+        class="control-btn"
+        id="frameButton">
+        TV Frame: On
+      </button>
+
+
+      <button
+        class="control-btn"
+        id="fullscreenButton">
+        Fullscreen
+      </button>
+
+
+      <button
+        class="control-btn"
+        id="healthButton">
+        System status
+      </button>
+
+
+      <button
+        class="control-btn wide"
+        id="nextScreenButton">
+        Next screen
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ======================================================
+       SYSTEM STATUS
+       ====================================================== -->
+
+  <div
+    class="health"
+    id="healthPanel"
+    role="dialog"
+    aria-modal="true"
+    aria-label="System status">
+
+
+    <div class="health-card">
+
+
+      <div class="health-head">
+
+        <div class="health-title">
+          Mini Vestaboard status
+        </div>
+
+        <button
+          class="health-close"
+          id="healthClose"
+          aria-label="Close">
+          ×
+        </button>
+
+      </div>
+
+
+      <dl
+        class="health-grid"
+        id="healthGrid">
+      </dl>
+
+
+      <div class="health-actions">
+
+        <button
+          class="control-btn"
+          id="retryMediaButton">
+          Retry media
+        </button>
+
+
+        <button
+          class="control-btn"
+          id="reloadButton">
+          Reload app
+        </button>
 
       </div>
 
     </div>
 
-
-    <!-- PIANO AUDIO -->
-    <audio
-      id="jazzPlayer"
-      preload="metadata">
-    </audio>
-
-  </main>
+  </div>
 
 
-  <script src="app.js?v=20260918-v32"></script>
+  <audio
+    id="jazzPlayer"
+    preload="metadata">
+  </audio>
+
+</main>
+
+
+<script
+  src="app.js?v=20260918-v323">
+</script>
 
 </body>
 </html>
